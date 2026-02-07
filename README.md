@@ -88,6 +88,7 @@ alias twbook="tpulsar-webbookmarks"
 # Todos (complete)
 
 - [X] Sxhkd keybindings.
+- [X] Font icons support.
 - [X] Prompt to show the notes.
 - [X] Prompt to open web bookmarks.
 - [X] Option to disable hidden files.
@@ -101,6 +102,5 @@ alias twbook="tpulsar-webbookmarks"
 
 # Todos (incomplete)
 
-- [ ] Font icons support.
 - [ ] Script to randomly select from directory.
 - [ ] Prompt that lists the installed packages.

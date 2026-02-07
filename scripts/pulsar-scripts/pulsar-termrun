@@ -33,7 +33,7 @@ pulsar_show_help() {
     # Show to colored help
     RESET="$(tput sgr0)"
     BLUE="$(tput bold && tput setaf 4)"
-    echo "${BLUE}pulsar-termrun:${RESET} [-p, --pause] [-c, --config config_file]\n"
+    echo "${BLUE}pulsar-termrun:${RESET} [-p, --pause] [-c, --config config_file] [-i, --icon icon]\n"
 
     # Exit after showing help
     exit 1
@@ -49,6 +49,7 @@ while [ $# -gt 0 ]; do
     case $1 in
         -c|--config) shift && . "$1";;
         -p|--pause) PULSAR_PAUSE="true";;
+        -i|--icon) shift && PULSAR_ICON="$1";;
         *) pulsar_show_help;;
     esac
 
@@ -56,10 +57,13 @@ while [ $# -gt 0 ]; do
 done
 
 # Show the prompt for commands
-PULSAR_CMD="$( dmenu_path | $PULSAR_PROMPT \
-                            $PULSAR_PROMPT_OPTS )"
+PULSAR_CMD="$( dmenu_path | sed "s/^/$PULSAR_ICON /" | \
+                           $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
 
 [ -z "$PULSAR_CMD" ] && exit 1
+
+# Remove the icon and the space from the selection
+PULSAR_CMD=$(echo "$PULSAR_CMD" | sed "s/^$PULSAR_ICON //")
 
 # Run file using opener
 if [ -z "$PULSAR_DETCH" ]; then

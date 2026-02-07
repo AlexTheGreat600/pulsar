@@ -33,7 +33,7 @@ pulsar_show_help() {
     # Show to colored help
     RESET="$(tput sgr0)"
     BLUE="$(tput bold && tput setaf 4)"
-    echo "${BLUE}pulsar-files:${RESET} [-d, --dir driectory] [-o, --open opener] [-c, --config config_file]\n"
+    echo "${BLUE}pulsar-files:${RESET} [-d, --dir directory] [-o, --open opener] [-c, --config config_file] [-i, --icon icon]\n"
 
     # Exit after showing help
     exit 1
@@ -49,6 +49,7 @@ while [ $# -gt 0 ]; do
         -c|--config) shift && . "$1";;
         -d|--dir) shift && PULSAR_DIR="$1";;
         -o|--open) shift && PULSAR_OPENER="$1";;
+        -i|--icon) shift && PULSAR_ICON="$1";;
         *) pulsar_show_help;;
     esac
 
@@ -62,32 +63,38 @@ if [ "$PULSAR_SHOW_HIDDEN" = "true" ]; then
 
     # Show the prompt for files (show-hidden)
     PULSAR_FILE="$( find . $PULSAR_FIND_OPTS | \
-                           sed 's/.\///' | \
+                           sed "s|^\./|$PULSAR_ICON |" | \
                            sort $PULSAR_SORT_OPTS | \
                            $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
 
 elif [ "$PULSAR_SHOW_HIDDEN" = "false" ]; then
 
     # Show the prompt for files (hide-hidden)
-    PULSAR_FILE="$( find -not -path '*/.*' $PULSAR_FIND_OPTS | \
-                                           sed 's/.\///' | \
+    PULSAR_FILE="$( find . -not -path '*/.*' $PULSAR_FIND_OPTS | \
+                                           sed "s|^\./|$PULSAR_ICON |" | \
                                            sort $PULSAR_SORT_OPTS | \
                                            $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
 fi
 
 [ -z "$PULSAR_FILE" ] && exit 1
 
+# Remove the icon and the space from the selection
+PULSAR_FILE_CLEANED=$(echo "$PULSAR_FILE" | sed "s/^$PULSAR_ICON //")
+
 # Show the prompt for opener
 if [ -z "$PULSAR_OPENER" ]; then
-    PULSAR_OPENER="$( echo $PULSAR_OPENERS \
-                           $PULSAR_GLOBAL_OPENERS | $PULSAR_PROMPT \
-                                                    $PULSAR_OPENER_PROMPT_OPTS )"
+    PULSAR_OPENER="$( echo "$PULSAR_OPENERS $PULSAR_GLOBAL_OPENERS" | \
+                           sed "s/^/$PULSAR_ICON /" | \
+                           $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
     [ -z "$PULSAR_OPENER" ] && exit 1
 fi
 
+# Remove the icon and the space from the selection
+PULSAR_OPENER=$(echo "$PULSAR_OPENER" | sed "s/^$PULSAR_ICON //")
+
 # Run file using opener
 if [ -z "$PULSAR_DETCH" ]; then
-    $PULSAR_OPENER "${PULSAR_DIR}/$PULSAR_FILE"
+    $PULSAR_OPENER "${PULSAR_DIR}/$PULSAR_FILE_CLEANED"
 else
-    $PULSAR_OPENER "${PULSAR_DIR}/$PULSAR_FILE" &> /dev/null &
+    $PULSAR_OPENER "${PULSAR_DIR}/$PULSAR_FILE_CLEANED" &> /dev/null &
 fi
