@@ -10,7 +10,7 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | SCRIPT              | DESCRIPTION                   |
 | ------------------- | ----------------------------- |
 | pulsar-files        | Script is customisible through config files (most script are created using this). |
-| pulsar-applications | Launch applications on quickly. |
+| pulsar-applications | Launch applications (appimage, local binaries, etc) very quickly. |
 | pulsar-documents    | Open documents without using any file manager. |
 | pulsar-music        | Open music file with light speed. |
 | pulsar-pictures     | Open your pics in ~/Pictures folder (this can be customized through config). |
@@ -27,7 +27,7 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | pulsar-notes        | Copy or edit text content of the selected note. (usefull for snippets and templates) |
 | pulsar-termrun      | Run commands in terminal or sub-terminal |
 | pulsar-cmdbookmarks | Run commonly used commands quickly |
-| pulsar-games        | Launch games on fly |
+| pulsar-games        | Launch games (nes, snes, etc) very quickly |
 
 # Support.
 
