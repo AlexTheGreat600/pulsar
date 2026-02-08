@@ -69,7 +69,7 @@ PULSAR_ITEM_CLEANED=$(echo "$PULSAR_ITEM" | sed "s/^$PULSAR_ICON //")
 if [ -z "$PULSAR_OPENER" ]; then
     PULSAR_OPENER="$( echo "$PULSAR_OPENERS $PULSAR_GLOBAL_OPENERS" | \
                            sed "s/^/$PULSAR_ICON /" | \
-                           $PULSAR_PROMPT $PULSAR_PROMPT_OPENER_OPTS )"
+                           $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
     [ -z "$PULSAR_OPENER" ] && exit 1
 fi
 
