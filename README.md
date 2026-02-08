@@ -27,6 +27,7 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | pulsar-notes        | Copy or edit text content of the selected note. (usefull for snippets and templates) |
 | pulsar-termrun      | Run commands in terminal or sub-terminal |
 | pulsar-cmdbookmarks | Run commonly used commands quickly |
+| pulsar-games        | Launch games on fly |
 
 # Support.
 
