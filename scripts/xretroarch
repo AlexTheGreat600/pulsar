@@ -1,0 +1,54 @@
+#!/bin/sh
+
+#  ___ ___ _____ ___  ___
+# | _ \ __|_   _| _ \/ _ \
+# |   / _|  | | |   / (_) |
+# |_|_\___| |_| |_|_\\___/
+#
+
+# Check if enough arguments are provided
+if [ "$#" -lt 2 ]; then
+    echo "Usage: launch <console> <rom_path>"
+    exit 1
+fi
+
+# Convert first argument to lowercase using standard tr
+CONSOLE=$(echo "$1" | tr '[:upper:]' '[:lower:]')
+ROM="$2"
+DIR="$HOME/.config/retroarch/cores"
+
+case "$CONSOLE" in
+    "ds"|"desmume")          CORE="$DIR/desmume2015_libretro.so" ;;
+    "dolphin"|"gc"|"wii")    CORE="$DIR/dolphin_libretro.so" ;;
+    "dosbox")                CORE="$DIR/dosbox_pure_libretro.so" ;;
+    "nes"|"famicom")         CORE="$DIR/fceumm_libretro.so" ;;
+    "gb"|"gbc"|"gambatte")   CORE="$DIR/gambatte_libretro.so" ;;
+    "genesis"|"megadrive")   CORE="$DIR/genesis_plus_gx_libretro.so" ;;
+    "gme")                   CORE="$DIR/gme_libretro.so" ;;
+    "gba"|"gpsp")            CORE="$DIR/gpsp_libretro.so" ;;
+    "jaxe")                  CORE="$DIR/jaxe_libretro.so" ;;
+    "mame")                  CORE="$DIR/mame2003_plus_libretro.so" ;;
+    "pce"|"tg16")            CORE="$DIR/mednafen_pce_fast_libretro.so" ;;
+    "melondsds")             CORE="$DIR/melondsds_libretro.so" ;;
+    "melonds")               CORE="$DIR/melonds_libretro.so" ;;
+    "mgba")                  CORE="$DIR/mgba_libretro.so" ;;
+    "n64")                   CORE="$DIR/mupen64plus_next_libretro.so" ;;
+    "pico"|"mastersystem")   CORE="$DIR/picodrive_libretro.so" ;;
+    "pico8")                 CORE="$DIR/retro8_libretro.so" ;;
+    "sameboy")               CORE="$DIR/sameboy_libretro.so" ;;
+    "snes05")                CORE="$DIR/snes9x2005_plus_libretro.so" ;;
+    "snes10")                CORE="$DIR/snes9x2010_libretro.so" ;;
+    "snes")                  CORE="snes9x_libretro.so" ;;
+    "squirreljme")           CORE="$DIR/squirreljme_libretro.so" ;;
+    "stella14")              CORE="$DIR/stella2014_libretro.so" ;;
+    "stella23")              CORE="$DIR/stella2023_libretro.so" ;;
+    "atari"|"stella")        CORE="$DIR/stella_libretro.so" ;;
+    "ps1"|"swanstation")     CORE="$DIR/swanstation_libretro.so" ;;
+    *)
+        echo "Unknown console: $CONSOLE"
+        exit 1
+        ;;
+esac
+
+# Execute RetroArch
+retroarch -L "$CORE" "$ROM" &> /dev/null &
