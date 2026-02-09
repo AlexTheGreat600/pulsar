@@ -1,0 +1,10 @@
+#! /bin/sh
+
+#  ___ ___ _    ___ ___
+# | __|_ _| |  | __/ __|
+# | _| | || |__| _|\__ \
+# |_| |___|____|___|___/
+#
+
+pulsar-list -c ~/.config/pulsar/pulsar-configs/pulsar.conf \
+            -c ~/.config/pulsar/pulsar-configs/pulsar-filebookmarks.conf $@

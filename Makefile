@@ -120,6 +120,7 @@ test-pulsar-scripts:
 	pulsar-webbookmarks 
 	pulsar-websearch 
 	pulsar-xresources
+	pulsar-filebookmarks
 
 #   _____ ___ ___ _____   _____ ___ _   _ _    ___   _   ___ 
 #  |_   _| __/ __|_   _|_|_   _| _ \ | | | |  / __| /_\ | _ \
@@ -145,3 +146,4 @@ test-tpulsar-scripts:
 	tpulsar-webbookmarks 
 	tpulsar-websearch 
 	tpulsar-xresources
+	tpulsar-filebookmarks
