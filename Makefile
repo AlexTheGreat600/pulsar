@@ -122,6 +122,7 @@ test-pulsar-scripts:
 	pulsar-websearch 
 	pulsar-xresources
 	pulsar-filebookmarks
+	pulsar-games
 
 #   _____ ___ ___ _____   _____ ___ _   _ _    ___   _   ___ 
 #  |_   _| __/ __|_   _|_|_   _| _ \ | | | |  / __| /_\ | _ \
@@ -148,3 +149,4 @@ test-tpulsar-scripts:
 	tpulsar-websearch 
 	tpulsar-xresources
 	tpulsar-filebookmarks
+	tpulsar-games
