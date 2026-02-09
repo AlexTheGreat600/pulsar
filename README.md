@@ -30,6 +30,15 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | pulsar-games          | Launch games (nes, snes, etc) very quickly |
 | pulsar-filebookmarks  | Bookmark files or folders and open them quickly |
 
+*Other scripts*
+
+| SCRIPT              | DESCRIPTION                  |
+| ------------------- | ---------------------------- |
+| xclip-copy          | Copy the selected entry text |
+| xclip-file-copy     | Copy the text of entire file |
+| xdg-random          | Randomly open file from selected directory and open it using xdg-open |
+| xdotool-type-file   | Type entire text of file |
+
 # Support.
 
 I am born dyslexic and mentally ill, it took a lot of effort to make this project.
@@ -97,6 +106,7 @@ alias twbook="tpulsar-webbookmarks"
 - [X] Script to list and open manpages.
 - [X] Prompt to show templates of code.
 - [X] Makefile for install and uninstall
+- [X] Script to randomly select from directory.
 - [X] Script to that holds list of keybindings.
 - [X] Script to search using specific search engine.
 - [X] Menu that holds commonly used commands (`shutdown`, `reboot`).
@@ -104,5 +114,4 @@ alias twbook="tpulsar-webbookmarks"
 
 # Todos (incomplete)
 
-- [ ] Script to randomly select from directory.
 - [ ] Prompt that lists the installed packages.
