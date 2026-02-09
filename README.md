@@ -28,6 +28,11 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | pulsar-termrun      | Run commands in terminal or sub-terminal |
 | pulsar-cmdbookmarks | Run commonly used commands quickly |
 | pulsar-games        | Launch games (nes, snes, etc) very quickly |
+
+*Other scripts*
+
+| SCRIPT              | DESCRIPTION                  |
+| ------------------- | ---------------------------- |
 | xclip-copy          | Copy the selected entry text |
 | xclip-file-copy     | Copy the text of entire file |
 | xdg-random          | Randomly open file from selected directory and open it using xdg-open |
