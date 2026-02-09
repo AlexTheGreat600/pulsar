@@ -47,6 +47,7 @@ pulsar_show_help() {
 while [ $# -gt 0 ]; do
 
     case $1 in
+        -r|--run) PULSAR_PAUSE="";;
         -c|--config) shift && . "$1";;
         -p|--pause) PULSAR_PAUSE="true";;
         -i|--icon) shift && PULSAR_ICON="$1";;
@@ -69,7 +70,10 @@ PULSAR_CMD=$(echo "$PULSAR_CMD" | sed "s/^$PULSAR_ICON //")
 if [ -z "$PULSAR_DETCH" ]; then
     $PULSAR_CMD
 else
-    if [ "$PULSAR_PAUSE" = "false" ]; then
+    if [ -z "$PULSAR_PAUSE" ]; then
+        $PULSAR_CMD &> /dev/null &
+
+    elif [ "$PULSAR_PAUSE" = "false" ]; then
         $PULSAR_TERM sh -c "$PULSAR_CMD" &> /dev/null &
 
     elif [ "$PULSAR_PAUSE" = "true" ]; then
