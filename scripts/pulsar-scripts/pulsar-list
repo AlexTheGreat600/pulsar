@@ -1,6 +1,6 @@
 #! /bin/sh
 
-# ██████╗ ██╗   ██╗██╗     ███████╗ █████╗ ██████╗ 
+# ██████╗ ██╗   ██╗██╗     ███████╗ █████╗ ██████╗
 # ██╔══██╗██║   ██║██║     ██╔════╝██╔══██╗██╔══██╗
 # ██████╔╝██║   ██║██║     ███████╗███████║██████╔╝
 # ██╔═══╝ ██║   ██║██║     ╚════██║██╔══██║██╔══██╗
@@ -55,6 +55,9 @@ while [ $# -gt 0 ]; do
 
     shift
 done
+
+# Change the current directory
+cd "$PULSAR_DIR"
 
 # Prepend icon to list and show prompt
 PULSAR_ITEM="$( sed "s|^|$PULSAR_ICON |" < "$PULSAR_LIST" | \
