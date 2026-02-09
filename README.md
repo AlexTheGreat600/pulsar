@@ -38,6 +38,7 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | xclip-file-copy     | Copy the text of entire file |
 | xdg-random          | Randomly open file from selected directory and open it using xdg-open |
 | xdotool-type-file   | Type entire text of file |
+| xretroarch          | A simple retroarch helper script |
 
 # Support.
 
