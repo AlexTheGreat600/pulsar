@@ -1,4 +1,4 @@
-.config/pulsar/ : pulsar :
+.config/pulsar/
 .config/pulsar/tpulsar-configs
 .config/pulsar/tpulsar-configs/tpulsar-sources.conf
 .config/pulsar/tpulsar-configs/tpulsar-notes.conf
@@ -20,6 +20,7 @@
 .config/pulsar/tpulsar-configs/tpulsar-cmdbookmarks.conf
 .config/pulsar/tpulsar-configs/tpulsar-documents.conf
 .config/pulsar/tpulsar-configs/tpulsar-desktop.conf
+.config/pulsar/tpulsar-configs/tpulsar-emojis.conf
 .config/pulsar/pulsar-configs
 .config/pulsar/pulsar-configs/pulsar-projects.conf
 .config/pulsar/pulsar-configs/pulsar-keybindings-list.txt
@@ -47,4 +48,5 @@
 .config/pulsar/pulsar-configs/pulsar-cmdbookmarks.conf
 .config/pulsar/pulsar-configs/pulsar-wallpapers.conf
 .config/pulsar/pulsar-configs/pulsar-desktop.conf
+.config/pulsar/pulsar-configs/pulsar-emojis.conf
 .config/pulsar/pulsar-configs
