@@ -79,7 +79,7 @@ fi
 [ -z "$PULSAR_FILE" ] && exit 1
 
 # Remove the icon and the space from the selection
-PULSAR_FILE_CLEANED=$(echo "$PULSAR_FILE" | sed "s/^$PULSAR_ICON //")
+PULSAR_FILE=$(echo "$PULSAR_FILE" | sed "s/^$PULSAR_ICON //")
 
 # Show the prompt for opener
 if [ -z "$PULSAR_OPENER" ]; then
@@ -94,7 +94,7 @@ PULSAR_OPENER=$(echo "$PULSAR_OPENER" | sed "s/^$PULSAR_ICON //")
 
 # Run file using opener
 if [ -z "$PULSAR_DETCH" ]; then
-    $PULSAR_OPENER "${PULSAR_DIR}/$PULSAR_FILE_CLEANED"
+    $PULSAR_OPENER "${PULSAR_DIR}/$PULSAR_FILE"
 else
-    $PULSAR_OPENER "${PULSAR_DIR}/$PULSAR_FILE_CLEANED" &> /dev/null &
+    $PULSAR_OPENER "${PULSAR_DIR}/$PULSAR_FILE" &> /dev/null &
 fi
