@@ -11,5 +11,5 @@ super + alt + {a, d, n, i, s, v, w}
 super + alt + {m, q, k, o, x, p, shift + p}
     sh -c 'pulsar-{manpages,websearch,keybindings,notes,xresources,termrun,termrun -p}'
 
-super + alt + {b, c, g, f, r, shift + r}
-    sh -c 'pulsar-{webbookmarks,cmdbookmarks,games,filebookmarks,termrun -r,desktop}'
+super + alt + {b, c, g, f, r, shift + r,e}
+    sh -c 'pulsar-{webbookmarks,cmdbookmarks,games,filebookmarks,termrun -r,desktop,emojis}'

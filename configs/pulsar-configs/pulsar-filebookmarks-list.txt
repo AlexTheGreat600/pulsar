@@ -1,4 +1,4 @@
-.config/pulsar/
+.config/pulsar/ : pulsar :
 .config/pulsar/tpulsar-configs
 .config/pulsar/tpulsar-configs/tpulsar-sources.conf
 .config/pulsar/tpulsar-configs/tpulsar-notes.conf

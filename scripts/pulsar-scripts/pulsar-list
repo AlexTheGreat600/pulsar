@@ -65,8 +65,9 @@ PULSAR_ITEM="$( sed "s|^|$PULSAR_ICON |" < "$PULSAR_LIST" | \
 
 [ -z "$PULSAR_ITEM" ] && exit 1
 
-# Remove the icon and the space from the selection
-PULSAR_ITEM_CLEANED=$(echo "$PULSAR_ITEM" | sed "s/^$PULSAR_ICON //")
+# Remove the icon, the space, and any :comment: from the selection
+PULSAR_ITEM_CLEANED=$(echo "$PULSAR_ITEM" | \
+                      sed "s/^$PULSAR_ICON //; s/:.*://g; s/  */ /g; s/^ //; s/ $//")
 
 # Show the prompt for opener
 if [ -z "$PULSAR_OPENER" ]; then
