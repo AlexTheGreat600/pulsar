@@ -1,0 +1,93 @@
+#! /bin/sh
+
+# ██████╗ ██╗   ██╗██╗     ███████╗ █████╗ ██████╗ 
+# ██╔══██╗██║   ██║██║     ██╔════╝██╔══██╗██╔══██╗
+# ██████╔╝██║   ██║██║     ███████╗███████║██████╔╝
+# ██╔═══╝ ██║   ██║██║     ╚════██║██╔══██║██╔══██╗
+# ██║     ╚██████╔╝███████╗███████║██║  ██║██║  ██║
+# ╚═╝      ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝
+
+# Exit the script on error
+set -e
+
+# Function to show logo
+pulsar_show_logo() {
+    tput setaf 4
+    echo "                             "
+    echo "███╗   ███╗ █████╗ ███╗   ██╗"
+    echo "████╗ ████║██╔══██╗████╗  ██║"
+    echo "██╔████╔██║███████║██╔██╗ ██║  PULSAR-PROCESS"
+    echo "██║╚██╔╝██║██╔══██║██║╚██╗██║"
+    echo "██║ ╚═╝ ██║██║  ██║██║ ╚████║"
+    echo "╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝"
+    echo "                             "
+    tput sgr0
+}
+
+# Function to show help
+pulsar_show_help() {
+
+    # Show the logo in help
+    pulsar_show_logo
+
+    # Show to colored help
+    RESET="$(tput sgr0)"
+    BLUE="$(tput bold && tput setaf 4)"
+    echo "${BLUE}pulsar-process:${RESET} [-d, --detailed] [-n, --normal] [-s, --simple] [-c, --config config_file] [-i, --icon icon]\n"
+
+    # Exit after showing help
+    exit 1
+}
+
+# Load the default configs for script
+. "$HOME/.config/pulsar/pulsar-configs/pulsar.conf"
+. "$HOME/.config/pulsar/pulsar-configs/pulsar-process.conf"
+
+# Parse the user arguments
+while [ $# -gt 0 ]; do
+
+    case $1 in
+        -c|--config) shift && . "$1";;
+        -s|--simple) PULSAR_VIEW="simple";;
+        -n|--normal) PULSAR_VIEW="normal";;
+        -i|--icon) shift && PULSAR_ICON="$1";;
+        -d|--detailed) PULSAR_VIEW="detailed";;
+        *) pulsar_show_help;;
+    esac
+
+    shift
+done
+
+# Show the prompt for files
+if [ "$PULSAR_VIEW" = "simple" ]; then
+    PULSAR_PROCESS="$( ps -u $(whoami) -o pid,comm | sed "s/^/$PULSAR_ICON /" \
+                                                   | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
+                                                   | awk '{ print $2 }' )"
+
+elif [ "$PULSAR_VIEW" = "normal" ]; then
+    PULSAR_PROCESS="$( ps -u $(whoami) -o pid,stat,comm | sed "s/^/$PULSAR_ICON /" \
+                                                        | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
+                                                        | awk '{ print $2 }' )"
+
+elif [ "$PULSAR_VIEW" = "detailed" ]; then
+    PULSAR_PROCESS="$( ps -u $(whoami) -o pid,ppid,user,%cpu,%mem,start,tty,command | sed "s/^/$PULSAR_ICON /" \
+                                                                                    | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
+                                                                                    | awk '{ print $2 }' )"
+fi
+
+[ -z "$PULSAR_PROCESS" ] && exit 1
+
+# Show the prompt for command
+if [ -z "$PULSAR_ACTION" ]; then
+    PULSAR_ACTION="$( echo "$PULSAR_ACTIONS" | \
+                      sed "s/^/$PULSAR_ICON /" | \
+                      $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
+
+    [ -z "$PULSAR_ACTION" ] && exit 1
+fi
+
+# Remove the icon and the space from the selection
+PULSAR_ACTION=$(echo "$PULSAR_ACTION" | sed "s/^$PULSAR_ICON //")
+
+# Run command on process
+$PULSAR_ACTION "$PULSAR_PROCESS"

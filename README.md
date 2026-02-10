@@ -31,6 +31,7 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | pulsar-filebookmarks  | Bookmark files or folders and open them quickly |
 | pulsar-desktop        | Open installed desktop files quickly |
 | pulsar-emojis         | Quickly access emojis using this script |
+| pulsar-process        | Quickly run commands on process |
 
 *Other scripts*
 
