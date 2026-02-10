@@ -13,6 +13,5 @@ https://www.space.com
 https://openlibrary.org
 https://www.gutenberg.org
 https://standardebooks.org
-https://libgen.is
 https://archive.org
 https://archive.org/details/texts
