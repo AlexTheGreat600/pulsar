@@ -19,7 +19,7 @@
 .config/pulsar/tpulsar-configs/tpulsar.conf
 .config/pulsar/tpulsar-configs/tpulsar-cmdbookmarks.conf
 .config/pulsar/tpulsar-configs/tpulsar-documents.conf
-.config/pulsar/pulsar-configs/tpulsar-desktop.conf
+.config/pulsar/tpulsar-configs/tpulsar-desktop.conf
 .config/pulsar/pulsar-configs
 .config/pulsar/pulsar-configs/pulsar-projects.conf
 .config/pulsar/pulsar-configs/pulsar-keybindings-list.txt
