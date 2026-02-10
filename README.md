@@ -29,6 +29,7 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | pulsar-cmdbookmarks   | Run commonly used commands quickly |
 | pulsar-games          | Launch games (nes, snes, etc) very quickly |
 | pulsar-filebookmarks  | Bookmark files or folders and open them quickly |
+| pulsar-desktop        | Open installed desktop files quickly |
 
 *Other scripts*
 

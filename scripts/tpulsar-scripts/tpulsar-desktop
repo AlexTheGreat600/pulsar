@@ -1,0 +1,4 @@
+#! /bin/sh
+
+pulsar-desktop -c ~/.config/pulsar/tpulsar-configs/tpulsar.conf \
+               -c ~/.config/pulsar/tpulsar-configs/tpulsar-desktop.conf $@

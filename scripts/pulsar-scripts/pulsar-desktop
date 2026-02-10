@@ -1,0 +1,76 @@
+#! /bin/sh
+
+# Exit on error
+set -e
+
+# Function to show logo
+pulsar_show_logo() {
+    tput setaf 4
+    echo "                                     "
+    echo " ███████╗██╗██╗     ███████╗███████╗ "
+    echo " ██╔════╝██║██║     ██╔════╝██╔════╝ "
+    echo " █████╗  ██║██║     █████╗  ███████╗  PULSAR-DESKTOP "
+    echo " ██╔══╝  ██║██║     ██╔══╝  ╚════██║ "
+    echo " ██║     ██║███████╗███████╗███████║ "
+    echo " ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝ "
+    echo "                                     "
+    tput sgr0
+}
+
+# Load the default configs
+. "$HOME/.config/pulsar/pulsar-configs/pulsar.conf"
+. "$HOME/.config/pulsar/pulsar-configs/pulsar-desktop.conf"
+
+# Function to show help
+pulsar_show_help() {
+
+    # Show the logo in help
+    pulsar_show_logo
+
+    # Show to colored help
+    RESET="$(tput sgr0)"
+    BLUE="$(tput bold && tput setaf 4)"
+    echo "${BLUE}pulsar-desktop:${RESET} [-d, --dirs directory] [-o, --open opener] [-c, --config config_file] [-i, --icon icon]\n"
+
+    # Exit after showing help
+    exit 1
+}
+
+# Parse the user arguments
+while [ $# -gt 0 ]; do
+
+    case $1 in
+        -c|--config) shift && . "$1";;
+        -d|--dirs) shift && PULSAR_DIR="$1";;
+        -o|--open) shift && PULSAR_OPENER="$1";;
+        -i|--icon) shift && PULSAR_ICON="$1";;
+        *) pulsar_show_help;;
+    esac
+
+    shift
+done
+
+# Show desktop apps prompt
+PULSAR_DESKTOP=$(find $PULSAR_DIR -name '*.desktop' $PULSAR_FIND_OPTS | \
+                      sed "s|.*/||; s|\.desktop$||" | \
+                      sort $PULSAR_SORT_OPTS | \
+                      sed "s/^/$PULSAR_ICON /" | \
+                      $PULSAR_PROMPT $PULSAR_PROMPT_OPTS)
+
+[ -z "$PULSAR_DESKTOP" ] && exit 1
+
+# Remove the icon and the space
+PULSAR_DESKTOP=$(echo "$PULSAR_DESKTOP" | sed "s/^$PULSAR_ICON //")
+
+# Find the path of the selection
+PULSAR_DESKTOP_PATH=$(find $PULSAR_DIR -name "$PULSAR_DESKTOP.desktop" | head -n 1)
+
+# Extract the exec command
+PULSAR_DESKTOP_EXEC=$(echo "$PULSAR_DESKTOP_PATH" | xargs awk -F= '/^Exec=/ {sub(/^Exec=/, ""); gsub(/%[iIkKnNuvVfF]/, ""); print; exit}')
+
+# Execute the desktop command
+if [ -z "$PULSAR_DETCH" ]; then
+    eval "$PULSAR_DESKTOP_EXEC"
+else
+    eval "$PULSAR_DESKTOP_EXEC" &> /dev/null &
+fi
