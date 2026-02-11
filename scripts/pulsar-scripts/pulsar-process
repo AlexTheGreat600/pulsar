@@ -60,9 +60,9 @@ done
 
 # Show the prompt for files
 if [ "$PULSAR_VIEW" = "simple" ]; then
-    PULSAR_PROCESS="$( ps -u $(whoami) -o pid,comm | sed "s/^/$PULSAR_ICON /" \
-                                                   | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
-                                                   | awk '{ print $2 }' )"
+    PULSAR_PROCESS="$( ps -u $(whoami) -o pid=,comm= | sed "s/^/$PULSAR_ICON /" \
+                                                     | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
+                                                     | awk '{ print $2 }' )"
 
 elif [ "$PULSAR_VIEW" = "normal" ]; then
     PULSAR_PROCESS="$( ps -u $(whoami) -o pid,stat,comm | sed "s/^/$PULSAR_ICON /" \
