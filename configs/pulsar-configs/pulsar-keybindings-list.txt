@@ -16,6 +16,7 @@ Pulsar: Open pulsar-termrun (normal) - (super+alt+r)
 Pulsar: Open pulsar-games - (super+alt+g)
 Pulsar: Open pulsar-emojis - (super+alt+e)
 Pulsar: Open pulsar-process - (super+alt+t)
+Pulsar: Open pulsar-mime - (super+alt+period)
 
 VSCode: Opens the vscode. - (alt+shift+p)
 VSCode: Quick open file. - (ctrl+p)

@@ -22,6 +22,7 @@
 .config/pulsar/tpulsar-configs/tpulsar-desktop.conf
 .config/pulsar/tpulsar-configs/tpulsar-emojis.conf
 .config/pulsar/tpulsar-configs/tpulsar-process.conf
+.config/pulsar/tpulsar-configs/tpulsar-mime.conf
 .config/pulsar/pulsar-configs
 .config/pulsar/pulsar-configs/pulsar-projects.conf
 .config/pulsar/pulsar-configs/pulsar-keybindings-list.txt
@@ -51,5 +52,6 @@
 .config/pulsar/pulsar-configs/pulsar-desktop.conf
 .config/pulsar/pulsar-configs/pulsar-emojis.conf
 .config/pulsar/tpulsar-configs/pulsar-process.conf
+.config/pulsar/tpulsar-configs/pulsar-mime.conf
 .config/pulsar/pulsar-configs
 
