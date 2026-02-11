@@ -20,7 +20,6 @@ pulsar-mime
 pulsar-process
 pulsar-videos
 pulsar-xresources
-
 tpulsar-applications
 tpulsar-emojis
 tpulsar-keybindings
