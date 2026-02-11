@@ -106,9 +106,7 @@ uninstall-scripts:
 test-pulsar-scripts:
 	pulsar-applications 
 	pulsar-documents 
-	pulsar-files 
 	pulsar-keybindings 
-	pulsar-list 
 	pulsar-manpages 
 	pulsar-music 
 	pulsar-notes 
@@ -135,9 +133,7 @@ test-pulsar-scripts:
 test-tpulsar-scripts:
 	tpulsar-applications 
 	tpulsar-documents 
-	tpulsar-files 
 	tpulsar-keybindings 
-	tpulsar-list 
 	tpulsar-manpages 
 	tpulsar-music 
 	tpulsar-notes 
