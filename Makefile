@@ -123,6 +123,7 @@ test-pulsar-scripts:
 	pulsar-games
 	pulsar-desktop
 	pulsar-process
+	pulsar-mime
 
 #   _____ ___ ___ _____   _____ ___ _   _ _    ___   _   ___ 
 #  |_   _| __/ __|_   _|_|_   _| _ \ | | | |  / __| /_\ | _ \
@@ -150,3 +151,4 @@ test-tpulsar-scripts:
 	tpulsar-games
 	tpulsar-desktop
 	tpulsar-process
+	tpulsar-mime

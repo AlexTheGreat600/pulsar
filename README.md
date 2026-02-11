@@ -32,6 +32,7 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | pulsar-desktop        | Open installed desktop files quickly |
 | pulsar-emojis         | Quickly access emojis using this script |
 | pulsar-process        | Quickly run commands on process |
+| pulsar-mime           | Set mimetypes very quickly |
 
 *Other scripts*
 

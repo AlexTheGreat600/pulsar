@@ -1,0 +1,10 @@
+#! /bin/sh
+
+#  ___ ___ _    ___ ___
+# | __|_ _| |  | __/ __|
+# | _| | || |__| _|\__ \
+# |_| |___|____|___|___/
+#
+
+pulsar-mime -c ~/.config/pulsar/tpulsar-configs/tpulsar.conf \
+            -c ~/.config/pulsar/tpulsar-configs/tpulsar-mime.conf $@

@@ -9,7 +9,7 @@ pulsar_show_logo() {
     echo "                                     "
     echo " ███████╗██╗██╗     ███████╗███████╗ "
     echo " ██╔════╝██║██║     ██╔════╝██╔════╝ "
-    echo " █████╗  ██║██║     █████╗  ███████╗  PULSAR-DESKTOP "
+    echo " █████╗  ██║██║     █████╗  ███████╗  PULSAR-MIME "
     echo " ██╔══╝  ██║██║     ██╔══╝  ╚════██║ "
     echo " ██║     ██║███████╗███████╗███████║ "
     echo " ╚═╝     ╚═╝╚══════╝╚══════╝╚══════╝ "
@@ -19,7 +19,7 @@ pulsar_show_logo() {
 
 # Load the default configs
 . "$HOME/.config/pulsar/pulsar-configs/pulsar.conf"
-. "$HOME/.config/pulsar/pulsar-configs/pulsar-desktop.conf"
+. "$HOME/.config/pulsar/pulsar-configs/pulsar-mime.conf"
 
 # Function to show help
 pulsar_show_help() {
@@ -30,7 +30,7 @@ pulsar_show_help() {
     # Show to colored help
     RESET="$(tput sgr0)"
     BLUE="$(tput bold && tput setaf 4)"
-    echo "${BLUE}pulsar-desktop:${RESET} [-d, --dirs directory] [-c, --config config_file] [-i, --icon icon]\n"
+    echo "${BLUE}pulsar-mime:${RESET} [-l, --mime-lists] [-d, --desktop-dirs directory] [-c, --config config_file] [-i, --icon icon]\n"
 
     # Exit after showing help
     exit 1
@@ -41,35 +41,35 @@ while [ $# -gt 0 ]; do
 
     case $1 in
         -c|--config) shift && . "$1";;
-        -d|--dirs) shift && PULSAR_DIR="$1";;
         -i|--icon) shift && PULSAR_ICON="$1";;
+        -o|--open) shift && PULSAR_OPENER="$1";;
+        -d|--desktop-dirs) shift && PULSAR_DIR="$1";;
+        -l|--mime-lists) shift && PULSAR_MIME_LISTS="$1";;
         *) pulsar_show_help;;
     esac
 
     shift
 done
 
+# Prepend icon to list and show prompt
+PULSAR_MIME="$( cat $PULSAR_MIME_LISTS | \
+                sed "s|^|$PULSAR_ICON |" | \
+                $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
+
+[ -z "$PULSAR_MIME" ] && exit 1
+
 # Show desktop apps prompt
 PULSAR_DESKTOP=$(find $PULSAR_DIR -name '*.desktop' $PULSAR_FIND_OPTS | \
                       sed "s|.*/||; s|\.desktop$||" | \
                       sort $PULSAR_SORT_OPTS | \
                       sed "s/^/$PULSAR_ICON /" | \
-                      $PULSAR_PROMPT $PULSAR_PROMPT_OPTS)
+                      $PULSAR_PROMPT $PULSAR_OPENER_OPTS)
 
 [ -z "$PULSAR_DESKTOP" ] && exit 1
 
 # Remove the icon and the space
+PULSAR_MIME=$(echo "$PULSAR_MIME" | sed "s/^$PULSAR_ICON //")
 PULSAR_DESKTOP=$(echo "$PULSAR_DESKTOP" | sed "s/^$PULSAR_ICON //")
 
-# Find the path of the selection
-PULSAR_DESKTOP_PATH=$(find $PULSAR_DIR -name "$PULSAR_DESKTOP.desktop" | head -n 1)
-
-# Extract the exec command
-PULSAR_DESKTOP_EXEC=$(echo "$PULSAR_DESKTOP_PATH" | xargs awk -F= '/^Exec=/ {sub(/^Exec=/, ""); gsub(/%[iIkKnNuvVfF]/, ""); print; exit}')
-
-# Execute the desktop command
-if [ -z "$PULSAR_DETCH" ]; then
-    eval "$PULSAR_DESKTOP_EXEC"
-else
-    eval "$PULSAR_DESKTOP_EXEC" &> /dev/null &
-fi
+# Set the application for selected mime type
+xdg-mime default $PULSAR_DESKTOP.desktop $PULSAR_MIME
