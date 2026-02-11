@@ -48,8 +48,8 @@ while [ $# -gt 0 ]; do
     case $1 in
         -c|--config) shift && . "$1";;
         -d|--dir) shift && PULSAR_DIR="$1";;
-        -o|--open) shift && PULSAR_OPENER="$1";;
         -i|--icon) shift && PULSAR_ICON="$1";;
+        -o|--open) shift && PULSAR_OPENER="$1";;
         *) pulsar_show_help;;
     esac
 
@@ -81,11 +81,13 @@ fi
 # Remove the icon and the space from the selection
 PULSAR_FILE=$(echo "$PULSAR_FILE" | sed "s/^$PULSAR_ICON //")
 
-# Show the prompt for opener
 if [ -z "$PULSAR_OPENER" ]; then
+
+    # Show the prompt for opener
     PULSAR_OPENER="$( echo "$PULSAR_OPENERS $PULSAR_GLOBAL_OPENERS" | \
-                           sed "s/^/$PULSAR_ICON /" | \
-                           $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
+                            sed "s/^/$PULSAR_ICON /" | \
+                            $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
+
     [ -z "$PULSAR_OPENER" ] && exit 1
 fi
 

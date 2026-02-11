@@ -13,14 +13,14 @@ set -e
 # Function to show logo
 pulsar_show_logo() {
     tput setaf 4
-    echo "                                 "
-    echo "██████╗ ██████╗  ██████╗  ██████╗"
-    echo "██╔══██╗██╔══██╗██╔═══██╗██╔════╝"
-    echo "██████╔╝██████╔╝██║   ██║██║      PULSAR-PROCESS"
-    echo "██╔═══╝ ██╔══██╗██║   ██║██║     "
-    echo "██║     ██║  ██║╚██████╔╝╚██████╗"
-    echo "╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚═════╝"
-    echo "                                 "
+    echo "                                   "
+    echo " ██████╗ ██████╗  ██████╗  ██████╗ "
+    echo " ██╔══██╗██╔══██╗██╔═══██╗██╔════╝ "
+    echo " ██████╔╝██████╔╝██║   ██║██║       PULSAR-PROCESS"
+    echo " ██╔═══╝ ██╔══██╗██║   ██║██║      "
+    echo " ██║     ██║  ██║╚██████╔╝╚██████╗ "
+    echo " ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ "
+    echo "                                   "
     tput sgr0
 }
 
@@ -58,18 +58,23 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-# Show the prompt for files
 if [ "$PULSAR_VIEW" = "simple" ]; then
+
+    # Show prompt for simple process view
     PULSAR_PROCESS="$( ps -u $(whoami) -o pid=,comm= | sed "s/^/$PULSAR_ICON /" \
                                                      | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
                                                      | awk '{ print $2 }' )"
 
 elif [ "$PULSAR_VIEW" = "normal" ]; then
+
+    # Show prompt for normal process view
     PULSAR_PROCESS="$( ps -u $(whoami) -o pid,stat,comm | sed "s/^/$PULSAR_ICON /" \
                                                         | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
                                                         | awk '{ print $2 }' )"
 
 elif [ "$PULSAR_VIEW" = "detailed" ]; then
+
+    # Show prompt for detailed process view
     PULSAR_PROCESS="$( ps -u $(whoami) -o pid,ppid,user,%cpu,%mem,start,tty,command | sed "s/^/$PULSAR_ICON /" \
                                                                                     | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
                                                                                     | awk '{ print $2 }' )"
@@ -77,8 +82,9 @@ fi
 
 [ -z "$PULSAR_PROCESS" ] && exit 1
 
-# Show the prompt for command
 if [ -z "$PULSAR_ACTION" ]; then
+
+    # Show the prompt for action
     PULSAR_ACTION="$( echo "$PULSAR_ACTIONS" | \
                       sed "s/^/$PULSAR_ICON /" | \
                       $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"

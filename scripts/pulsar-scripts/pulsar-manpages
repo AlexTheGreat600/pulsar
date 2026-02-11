@@ -13,14 +13,14 @@ set -e
 # Function to show logo
 pulsar_show_logo() {
     tput setaf 4
-    echo "                             "
-    echo "███╗   ███╗ █████╗ ███╗   ██╗"
-    echo "████╗ ████║██╔══██╗████╗  ██║"
-    echo "██╔████╔██║███████║██╔██╗ ██║  PULSAR-MANPAGES"
-    echo "██║╚██╔╝██║██╔══██║██║╚██╗██║"
-    echo "██║ ╚═╝ ██║██║  ██║██║ ╚████║"
-    echo "╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝"
-    echo "                             "
+    echo "                               "
+    echo " ███╗   ███╗ █████╗ ███╗   ██╗ "
+    echo " ████╗ ████║██╔══██╗████╗  ██║ "
+    echo " ██╔████╔██║███████║██╔██╗ ██║  PULSAR-MANPAGES"
+    echo " ██║╚██╔╝██║██╔══██║██║╚██╗██║ "
+    echo " ██║ ╚═╝ ██║██║  ██║██║ ╚████║ "
+    echo " ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ "
+    echo "                               "
     tput sgr0
 }
 
@@ -58,23 +58,27 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-# Show the prompt for files
 if [ "$PULSAR_VIEW" = "detailed" ]; then
-    PULSAR_MANPAGE="$( apropos . $PULSAR_APROPOS_OPTS | sed "s/^/$PULSAR_ICON /" | \
-                           $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
-                           | sed "s/^$PULSAR_ICON //" | tr -d '()' \
-                           | awk -F" " '{print $2" "$1}' )"
+
+    # Show prompt for detailed manpage view
+    PULSAR_MANPAGE="$( apropos . $PULSAR_APROPOS_OPTS | sed "s/^/$PULSAR_ICON /" \
+                                                      | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
+                                                      | sed "s/^$PULSAR_ICON //" | tr -d '()' \
+                                                      | awk -F" " '{print $2" "$1}' )"
 
 elif [ "$PULSAR_VIEW" = "simple" ]; then
+
+    # Show prompt for simple manpage view
     PULSAR_MANPAGE="$( apropos . $PULSAR_APROPOS_OPTS | awk -F" " '{print $1" "$2}' \
-                           | sed "s/^/$PULSAR_ICON /" | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
-                           | sed "s/^$PULSAR_ICON //" | tr -d '()' \
-                           | awk -F" " '{print $2" "$1}' )"
+                                                      | sed "s/^/$PULSAR_ICON /" \
+                                                      | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
+                                                      | sed "s/^$PULSAR_ICON //" | tr -d '()' \
+                                                      | awk -F" " '{print $2" "$1}' )"
 fi
 
 [ -z "$PULSAR_MANPAGE" ] && exit 1
 
-# Run file using opener
+# Open manpage in pager
 if [ -z "$PULSAR_DETCH" ]; then
     $PULSAR_MANPAGER $PULSAR_MANPAGE
 else

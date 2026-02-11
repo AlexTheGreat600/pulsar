@@ -16,7 +16,7 @@ pulsar_show_logo() {
     echo "                                      "
     echo " ████████╗███████╗██████╗ ███╗   ███╗ "
     echo " ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║ "
-    echo "    ██║   █████╗  ██████╔╝██╔████╔██║ PULSAR -TERMRUN "
+    echo "    ██║   █████╗  ██████╔╝██╔████╔██║ PULSAR-TERMRUN"
     echo "    ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║ "
     echo "    ██║   ███████╗██║  ██║██║ ╚═╝ ██║ "
     echo "    ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝ "
@@ -58,8 +58,8 @@ while [ $# -gt 0 ]; do
 done
 
 # Show the prompt for commands
-PULSAR_CMD="$( dmenu_path | sed "s/^/$PULSAR_ICON /" | \
-                           $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
+PULSAR_CMD="$( dmenu_path | sed "s/^/$PULSAR_ICON /" \
+                          | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
 
 [ -z "$PULSAR_CMD" ] && exit 1
 
@@ -69,14 +69,21 @@ PULSAR_CMD=$(echo "$PULSAR_CMD" | sed "s/^$PULSAR_ICON //")
 # Run file using opener
 if [ -z "$PULSAR_DETCH" ]; then
     $PULSAR_CMD
+
 else
     if [ -z "$PULSAR_PAUSE" ]; then
+    
+        # Normally run command (without pause)
         $PULSAR_CMD &> /dev/null &
 
     elif [ "$PULSAR_PAUSE" = "false" ]; then
+
+        # Run command using shell in terminal (without pause)
         $PULSAR_TERM sh -c "$PULSAR_CMD" &> /dev/null &
 
     elif [ "$PULSAR_PAUSE" = "true" ]; then
+
+        # Run command using shell in terminal (with pause)
         $PULSAR_TERM sh -c "echo '$ ' $PULSAR_CMD; \
                                       $PULSAR_CMD; read -p ':' PROMPT" &> /dev/null &
     fi
