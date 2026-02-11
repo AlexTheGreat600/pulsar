@@ -124,6 +124,7 @@ test-pulsar-scripts:
 	pulsar-filebookmarks
 	pulsar-games
 	pulsar-desktop
+	pulsar-process
 
 #   _____ ___ ___ _____   _____ ___ _   _ _    ___   _   ___ 
 #  |_   _| __/ __|_   _|_|_   _| _ \ | | | |  / __| /_\ | _ \
@@ -152,3 +153,4 @@ test-tpulsar-scripts:
 	tpulsar-filebookmarks
 	tpulsar-games
 	tpulsar-desktop
+	tpulsar-process
