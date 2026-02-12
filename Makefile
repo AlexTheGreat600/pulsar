@@ -113,7 +113,7 @@ test-pulsar-scripts:
 	pulsar-pictures 
 	pulsar-projects 
 	pulsar-sources 
-	pulsar-termrun 
+	pulsar-execute
 	pulsar-videos 
 	pulsar-wallpapers 
 	pulsar-webbookmarks 
@@ -141,7 +141,7 @@ test-tpulsar-scripts:
 	tpulsar-pictures 
 	tpulsar-projects 
 	tpulsar-sources 
-	tpulsar-termrun 
+	tpulsar-execute
 	tpulsar-videos 
 	tpulsar-wallpapers 
 	tpulsar-webbookmarks 

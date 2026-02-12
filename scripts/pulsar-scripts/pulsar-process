@@ -33,7 +33,7 @@ pulsar_show_help() {
     # Show to colored help
     RESET="$(tput sgr0)"
     BLUE="$(tput bold && tput setaf 4)"
-    echo "${BLUE}pulsar-process:${RESET} [-d, --detailed] [-n, --normal] [-s, --simple] [-c, --config config_file] [-i, --icon icon]\n"
+    echo "${BLUE}pulsar-process:${RESET} [-d, --detailed] [-n, --normal] [-s, --simple] [-c, --config config_file] [-i, --icon icon] [-r, --random-sort]\n"
 
     # Exit after showing help
     exit 1
@@ -52,6 +52,7 @@ while [ $# -gt 0 ]; do
         -n|--normal) PULSAR_VIEW="normal";;
         -i|--icon) shift && PULSAR_ICON="$1";;
         -d|--detailed) PULSAR_VIEW="detailed";;
+        -r|--random-sort) PULSAR_SORT_OPTS="$PULSAR_SORT_OPTS --random-sort";;
         *) pulsar_show_help;;
     esac
 

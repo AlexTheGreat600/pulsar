@@ -30,7 +30,7 @@ pulsar_show_help() {
     # Show to colored help
     RESET="$(tput sgr0)"
     BLUE="$(tput bold && tput setaf 4)"
-    echo "${BLUE}pulsar-desktop:${RESET} [-d, --dirs directory] [-c, --config config_file] [-i, --icon icon]\n"
+    echo "${BLUE}pulsar-desktop:${RESET} [-d, --dirs directory] [-c, --config config_file] [-i, --icon icon] [-r, --random-sort]\n"
 
     # Exit after showing help
     exit 1
@@ -43,6 +43,7 @@ while [ $# -gt 0 ]; do
         -c|--config) shift && . "$1";;
         -d|--dirs) shift && PULSAR_DIR="$1";;
         -i|--icon) shift && PULSAR_ICON="$1";;
+        -r|--random-sort) PULSAR_SORT_OPTS="$PULSAR_SORT_OPTS --random-sort";;
         *) pulsar_show_help;;
     esac
 

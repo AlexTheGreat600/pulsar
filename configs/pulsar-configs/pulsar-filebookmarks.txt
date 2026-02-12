@@ -15,7 +15,7 @@
 .config/pulsar/tpulsar-configs/tpulsar-keybindings.conf
 .config/pulsar/tpulsar-configs/tpulsar-xresources.conf
 .config/pulsar/tpulsar-configs/tpulsar-webbookmarks.conf
-.config/pulsar/tpulsar-configs/tpulsar-termrun.conf
+.config/pulsar/tpulsar-configs/tpulsar-execute.conf
 .config/pulsar/tpulsar-configs/tpulsar.conf
 .config/pulsar/tpulsar-configs/tpulsar-cmdbookmarks.conf
 .config/pulsar/tpulsar-configs/tpulsar-documents.conf
@@ -26,6 +26,7 @@
 .config/pulsar/tpulsar-configs/tpulsar-packages.conf
 .config/pulsar/pulsar-configs
 .config/pulsar/pulsar-configs/pulsar-projects.conf
+.config/pulsar/pulsar-configs/pulsar-execute.conf
 .config/pulsar/pulsar-configs/pulsar-keybindings-list.txt
 .config/pulsar/pulsar-configs/pulsar-sources.conf
 .config/pulsar/pulsar-configs/pulsar-manpages.conf

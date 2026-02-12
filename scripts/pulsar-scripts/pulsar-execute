@@ -13,14 +13,14 @@ set -e
 # Function to show logo
 pulsar_show_logo() {
     tput setaf 4
-    echo "                                      "
-    echo " ████████╗███████╗██████╗ ███╗   ███╗ "
-    echo " ╚══██╔══╝██╔════╝██╔══██╗████╗ ████║ "
-    echo "    ██║   █████╗  ██████╔╝██╔████╔██║ PULSAR-TERMRUN"
-    echo "    ██║   ██╔══╝  ██╔══██╗██║╚██╔╝██║ "
-    echo "    ██║   ███████╗██║  ██║██║ ╚═╝ ██║ "
-    echo "    ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝ "
-    echo "                                      "
+    "                                                            "
+    " ███████╗██╗  ██╗███████╗ ██████╗██╗   ██╗████████╗███████╗ "
+    " ██╔════╝╚██╗██╔╝██╔════╝██╔════╝██║   ██║╚══██╔══╝██╔════╝ "
+    " █████╗   ╚███╔╝ █████╗  ██║     ██║   ██║   ██║   █████╗   PULSAR-EXECUTE "
+    " ██╔══╝   ██╔██╗ ██╔══╝  ██║     ██║   ██║   ██║   ██╔══╝   "
+    " ███████╗██╔╝ ██╗███████╗╚██████╗╚██████╔╝   ██║   ███████╗ "
+    " ╚══════╝╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝    ╚═╝   ╚══════╝ "
+    "                                                            "
     tput sgr0
 }
 
@@ -33,7 +33,7 @@ pulsar_show_help() {
     # Show to colored help
     RESET="$(tput sgr0)"
     BLUE="$(tput bold && tput setaf 4)"
-    echo "${BLUE}pulsar-termrun:${RESET} [-r, --run] [-p, --pause] [-c, --config config_file] [-i, --icon icon]\n"
+    echo "${BLUE}pulsar-execute:${RESET} [-r, --run] [-p, --pause] [-c, --config config_file] [-i, --icon icon] [-r, --random-sort]\n"
 
     # Exit after showing help
     exit 1
@@ -41,7 +41,7 @@ pulsar_show_help() {
 
 # Load the default configs for script
 . "$HOME/.config/pulsar/pulsar-configs/pulsar.conf"
-. "$HOME/.config/pulsar/pulsar-configs/pulsar-termrun.conf"
+. "$HOME/.config/pulsar/pulsar-configs/pulsar-execute.conf"
 
 # Parse the user arguments
 while [ $# -gt 0 ]; do
@@ -51,6 +51,7 @@ while [ $# -gt 0 ]; do
         -c|--config) shift && . "$1";;
         -p|--pause) PULSAR_PAUSE="true";;
         -i|--icon) shift && PULSAR_ICON="$1";;
+        -r|--random-sort) PULSAR_SORT_OPTS="$PULSAR_SORT_OPTS --random-sort";;
         *) pulsar_show_help;;
     esac
 

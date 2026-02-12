@@ -25,7 +25,7 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | pulsar-keybindings    | Quickly see keybindings for apps. |
 | pulsar-webbookmarks   | Open the selected in you favourite browser. |
 | pulsar-notes          | Copy or edit text content of the selected note. (usefull for snippets and templates) |
-| pulsar-termrun        | Run commands in terminal (with or without pause) or normally like dmenu_run  |
+| pulsar-execute        | Run commands in terminal (with or without pause) or normally like dmenu_run  |
 | pulsar-cmdbookmarks   | Run commonly used commands quickly |
 | pulsar-games          | Launch games (nes, snes, etc) very quickly |
 | pulsar-filebookmarks  | Bookmark files or folders and open them quickly |
