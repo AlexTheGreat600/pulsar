@@ -93,7 +93,6 @@ uninstall-scripts:
 
 	@echo "\n${RED}REMOVING EXTRA SCRIPTS: ${RESET}\n"
 	rm -I /usr/local/bin/xretroarch
-	rm -I /usr/local/bin/xdg-random
 	rm -I /usr/local/bin/xclip-copy
 	rm -I /usr/local/bin/xclip-file-copy
 	rm -I /usr/local/bin/xdotool-type-file
