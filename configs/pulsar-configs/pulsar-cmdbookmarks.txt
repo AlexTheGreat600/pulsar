@@ -12,7 +12,7 @@ pulsar-webbookmarks
 pulsar-desktop
 pulsar-manpages
 pulsar-pictures
-pulsar-termrun
+pulsar-execute
 pulsar-websearch
 pulsar-documents
 pulsar-games
@@ -35,7 +35,7 @@ tpulsar-webbookmarks
 tpulsar-desktop
 tpulsar-manpages
 tpulsar-pictures
-tpulsar-termrun
+tpulsar-execute
 tpulsar-websearch
 tpulsar-documents
 tpulsar-games
