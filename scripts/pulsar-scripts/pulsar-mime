@@ -63,7 +63,7 @@ PULSAR_DESKTOP=$(find $PULSAR_DIR -name '*.desktop' $PULSAR_FIND_OPTS | \
                       sed "s|.*/||; s|\.desktop$||" | \
                       sort $PULSAR_SORT_OPTS | \
                       sed "s/^/$PULSAR_ICON /" | \
-                      $PULSAR_PROMPT $PULSAR_OPENER_OPTS)
+                      $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS)
 
 [ -z "$PULSAR_DESKTOP" ] && exit 1
 

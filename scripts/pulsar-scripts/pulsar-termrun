@@ -33,7 +33,7 @@ pulsar_show_help() {
     # Show to colored help
     RESET="$(tput sgr0)"
     BLUE="$(tput bold && tput setaf 4)"
-    echo "${BLUE}pulsar-termrun:${RESET} [-p, --pause] [-c, --config config_file] [-i, --icon icon]\n"
+    echo "${BLUE}pulsar-termrun:${RESET} [-r, --run] [-p, --pause] [-c, --config config_file] [-i, --icon icon]\n"
 
     # Exit after showing help
     exit 1
