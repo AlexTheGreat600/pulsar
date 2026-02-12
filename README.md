@@ -93,13 +93,57 @@ I am born dyslexic and mentally ill, it took a lot of effort to make this projec
 Here are some aliases for tpulsar scripts.
 
 ```bash
-alias tvid="tpulsar-videos"
-alias trun="tpulsar-termrun"
+alias tapps="tpulsar-applications"
+alias temojis="tpulsar-emojis"
+alias tkeys="tpulsar-keybindings"
+alias tmusic="tpulsar-music"
+alias tproj="tpulsar-projects"
+alias twall="tpulsar-wallpapers"
+alias tcmdb="tpulsar-cmdbookmarks"
+alias tfileb="tpulsar-filebookmarks"
+alias tnote="tpulsar-notes"
+alias tsrc="tpulsar-sources"
+alias twebb="tpulsar-webbookmarks"
+alias tdesk="tpulsar-desktop"
 alias tman="tpulsar-manpages"
-alias twal="tpulsar-wallpaper"
-alias twsearch="tpulsar-search"
+alias tpics="tpulsar-pictures"
+alias texec="tpulsar-execute"
+alias twebs="tpulsar-websearch"
+alias tdocs="tpulsar-documents"
+alias troms="tpulsar-games"
+alias tmime="tpulsar-mime"
+alias tproc="tpulsar-process"
+alias tvids="tpulsar-videos"
 alias txres="tpulsar-xresources"
-alias twbook="tpulsar-webbookmarks"
+alias tpack="tpulsar-packages"
+```
+
+Here are some aliases for pulsar scripts.
+
+```bash
+alias papps="pulsar-applications"
+alias pemojis="pulsar-emojis"
+alias pkeys="pulsar-keybindings"
+alias pmusic="pulsar-music"
+alias pproj="pulsar-projects"
+alias pwall="pulsar-wallpapers"
+alias pcmdb="pulsar-cmdbookmarks"
+alias pfileb="pulsar-filebookmarks"
+alias pnote="pulsar-notes"
+alias psrc="pulsar-sources"
+alias pwebb="pulsar-webbookmarks"
+alias pdesk="pulsar-desktop"
+alias pman="pulsar-manpages"
+alias ppics="pulsar-pictures"
+alias pexec="pulsar-execute"
+alias pwebs="pulsar-websearch"
+alias pdocs="pulsar-documents"
+alias proms="pulsar-games"
+alias pmime="pulsar-mime"
+alias pproc="pulsar-process"
+alias pvids="pulsar-videos"
+alias pxres="pulsar-xresources"
+alias ppack="pulsar-packages"
 ```
 
 # Todos (complete)
