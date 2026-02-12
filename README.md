@@ -33,6 +33,7 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | pulsar-emojis         | Quickly access emojis using this script |
 | pulsar-process        | Quickly run commands on process |
 | pulsar-mime           | Set mimetypes very quickly |
+| pulsar-package        | Run commands on installed packages |
 
 *Other scripts*
 
@@ -112,11 +113,8 @@ alias twbook="tpulsar-webbookmarks"
 - [X] Prompt to show templates of code.
 - [X] Makefile for install and uninstall
 - [X] Script to randomly select from directory.
+- [X] Prompt that lists the installed packages.
 - [X] Script to that holds list of keybindings.
 - [X] Script to search using specific search engine.
 - [X] Menu that holds commonly used commands (`shutdown`, `reboot`).
 - [X] Script that takes file with list and open's the specific list item.
-
-# Todos (incomplete)
-
-- [ ] Prompt that lists the installed packages.

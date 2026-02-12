@@ -20,6 +20,7 @@ pulsar-mime
 pulsar-process
 pulsar-videos
 pulsar-xresources
+pulsar-packages
 tpulsar-applications
 tpulsar-emojis
 tpulsar-keybindings
@@ -42,6 +43,7 @@ tpulsar-mime
 tpulsar-process
 tpulsar-videos
 tpulsar-xresources
+tpulsar-packages
 backlight-brightness -s 20
 backlight-brightness -s 50
 backlight-brightness -s 100

@@ -1,0 +1,94 @@
+#! /bin/sh
+
+# Exit the script on error
+set -e
+
+# Function to show logo
+pulsar_show_logo() {
+    tput setaf 4
+    echo "                                                           "
+    echo " ██████╗  █████╗  ██████╗██╗  ██╗ █████╗  ██████╗ ███████╗ "
+    echo " ██╔══██╗██╔══██╗██╔════╝██║ ██╔╝██╔══██╗██╔════╝ ██╔════╝ "
+    echo " ██████╔╝███████║██║     █████╔╝ ███████║██║  ███╗█████╗   PULSAR-PACKAGES "
+    echo " ██╔═══╝ ██╔══██║██║     ██╔═██╗ ██╔══██║██║   ██║██╔══╝   "
+    echo " ██║     ██║  ██║╚██████╗██║  ██╗██║  ██║╚██████╔╝███████╗ "
+    echo " ╚═╝     ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝ "
+    echo "                                                           "
+    tput sgr0
+}
+
+# Function to show help
+pulsar_show_help() {
+
+    # Show the logo in help
+    pulsar_show_logo
+
+    # Show to colored help
+    RESET="$(tput sgr0)"
+    BLUE="$(tput bold && tput setaf 4)"
+    echo "${BLUE}pulsar-manpages:${RESET} [-d, --detailed] [-s, --simple] [-m, --manpager] [-c, --config config_file] [-i, --icon icon]\n"
+
+    # Exit after showing help
+    exit 1
+}
+
+# Load the default configs for script
+. "$HOME/.config/pulsar/pulsar-configs/pulsar.conf"
+. "$HOME/.config/pulsar/pulsar-configs/pulsar-packages.conf"
+
+# Parse the user arguments
+while [ $# -gt 0 ]; do
+
+    case $1 in
+        -c|--config) shift && . "$1";;
+        -s|--simple) PULSAR_VIEW="simple";;
+        -i|--icon) shift && PULSAR_ICON="$1";;
+        -d|--detailed) PULSAR_VIEW="detailed";;
+        -o|--open) shift && PULSAR_OPENER="$1";;
+        *) pulsar_show_help;;
+    esac
+
+    shift
+done
+
+if [ "$PULSAR_VIEW" = "detailed" ]; then
+
+    # Show prompt for detailed packages view
+    PULSAR_PACKAGE="$( dpkg -l $PULSAR_DPKG_OPTS | awk 'NR > 5' \
+                                                 | sed "s/^/$PULSAR_ICON /" \
+                                                 | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
+                                                 | sed "s/^$PULSAR_ICON //" \
+                                                 | awk '{ print $2 }' )"
+
+elif [ "$PULSAR_VIEW" = "simple" ]; then
+
+    # Show prompt for simple packages view
+    PULSAR_PACKAGE="$( dpkg -l $PULSAR_DPKG_OPTS | awk 'NR > 5' \
+                                                 | awk '{ print $2 }' \
+                                                 | sed "s/^/$PULSAR_ICON /" \
+                                                 | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
+                                                 | sed "s/^$PULSAR_ICON //" )"
+fi
+
+[ -z "$PULSAR_PACKAGE" ] && exit 1
+
+if [ -z "$PULSAR_OPENER" ]; then
+
+    # Show the prompt for opener
+    PULSAR_OPENER="$( echo "$PULSAR_OPENERS $PULSAR_GLOBAL_OPENERS" | \
+                            sed "s/^/$PULSAR_ICON /" | \
+                            $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
+
+    [ -z "$PULSAR_OPENER" ] && exit 1
+fi
+
+# Remove the icon and the space from the selection
+PULSAR_OPENER=$(echo "$PULSAR_OPENER" | sed "s/^$PULSAR_ICON //")
+
+# Run file using opener
+if [ -z "$PULSAR_DETCH" ]; then
+    $PULSAR_OPENER "$PULSAR_PACKAGE"
+else
+    $PULSAR_TERM sh -c "echo '$ ' $PULSAR_OPENER $PULSAR_PACKAGE; \
+                                  $PULSAR_OPENER $PULSAR_PACKAGE; read -p ':' PROMPT" &> /dev/null &
+fi

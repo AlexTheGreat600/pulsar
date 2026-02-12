@@ -14,5 +14,5 @@ super + alt + {m, q, k, o, x, p, shift + p}
 super + alt + {b, c, g, f, r, shift + r,e}
     sh -c 'pulsar-{webbookmarks,cmdbookmarks,games,filebookmarks,termrun -r,desktop,emojis}'
 
-super + alt + {t,period}
-    sh -c 'pulsar-{process,mime}'
+super + alt + {t,period,semicolon}
+    sh -c 'pulsar-{process,mime,packages}'
