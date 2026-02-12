@@ -7,5 +7,5 @@
 # ╚██████╗██║ ╚═╝ ██║██████╔╝
 #  ╚═════╝╚═╝     ╚═╝╚═════╝ 
 
-pulsar-cmdbookmarks -c ~/.config/pulsar/pulsar-configs/pulsar.conf \
-                    -c ~/.config/pulsar/pulsar-configs/pulsar-cmdbookmarks.conf $@
+pulsar-cmdbookmarks -c ~/.config/pulsar/tpulsar-configs/tpulsar.conf \
+                    -c ~/.config/pulsar/tpulsar-configs/tpulsar-cmdbookmarks.conf $@
