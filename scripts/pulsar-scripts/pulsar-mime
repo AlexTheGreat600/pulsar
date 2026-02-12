@@ -52,9 +52,9 @@ while [ $# -gt 0 ]; do
 done
 
 # Prepend icon to list and show prompt
-PULSAR_MIME="$( cat $PULSAR_MIME_LISTS | \
-                sed "s|^|$PULSAR_ICON |" | \
-                $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
+PULSAR_MIME="$( cat $PULSAR_MIME_LISTS | sort $PULSAR_SORT_OPTS \
+                                       | sed "s|^|$PULSAR_ICON |" \
+                                       | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
 
 [ -z "$PULSAR_MIME" ] && exit 1
 

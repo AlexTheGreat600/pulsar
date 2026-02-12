@@ -60,7 +60,8 @@ done
 cd "$PULSAR_DIR"
 
 # Prepend icon to list and show prompt
-PULSAR_ITEM="$( sed "s|^|$PULSAR_ICON |" < "$PULSAR_LIST" | \
+PULSAR_ITEM="$( sort $PULSAR_SORT_OPTS < "$PULSAR_LIST" | \
+                sed "s|^|$PULSAR_ICON |" | \
                 $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
 
 [ -z "$PULSAR_ITEM" ] && exit 1
@@ -73,6 +74,7 @@ if [ -z "$PULSAR_OPENER" ]; then
 
     # Show the prompt for opener
     PULSAR_OPENER="$( echo "$PULSAR_OPENERS $PULSAR_GLOBAL_OPENERS" | \
+                            sort $PULSAR_SORT_OPTS | \
                             sed "s/^/$PULSAR_ICON /" | \
                             $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
 

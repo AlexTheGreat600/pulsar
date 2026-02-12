@@ -71,8 +71,8 @@ elif [ "$PULSAR_SHOW_HIDDEN" = "false" ]; then
 
     # Show the prompt for files (hide-hidden)
     PULSAR_FILE="$( find . -not -path '*/.*' $PULSAR_FIND_OPTS | \
-                                           sed "s|^\./|$PULSAR_ICON |" | \
                                            sort $PULSAR_SORT_OPTS | \
+                                           sed "s|^\./|$PULSAR_ICON |" | \
                                            $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
 fi
 
@@ -85,6 +85,7 @@ if [ -z "$PULSAR_OPENER" ]; then
 
     # Show the prompt for opener
     PULSAR_OPENER="$( echo "$PULSAR_OPENERS $PULSAR_GLOBAL_OPENERS" | \
+                            sort $PULSAR_SORT_OPTS | \
                             sed "s/^/$PULSAR_ICON /" | \
                             $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
 

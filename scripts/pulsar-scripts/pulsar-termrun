@@ -58,7 +58,8 @@ while [ $# -gt 0 ]; do
 done
 
 # Show the prompt for commands
-PULSAR_CMD="$( dmenu_path | sed "s/^/$PULSAR_ICON /" \
+PULSAR_CMD="$( dmenu_path | sort $PULSAR_SORT_OPTS \
+                          | sed "s/^/$PULSAR_ICON /" \
                           | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
 
 [ -z "$PULSAR_CMD" ] && exit 1
