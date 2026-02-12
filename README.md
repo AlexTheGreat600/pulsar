@@ -74,12 +74,12 @@ I am born dyslexic and mentally ill, it took a lot of effort to make this projec
 
 # Requirements
 
-- `fzf` for tpulsar scripts (can be changed in `tpulsar.conf`).
-- `dmenu` for pulsar scripts (can be changed in `pulsar.conf`).
-- `xclip` for `xclip-file-copy` script (optional).
-- `xdotool` for `xdotool-type-file` script (optional).
 - `sxhkd` for keybindings (optional).
 - `make` for installation. (important)
+- `xclip` for `xclip-file-copy` script (optional).
+- `xdotool` for `xdotool-type-file` script (optional).
+- `fzf` for tpulsar scripts (can be changed in `tpulsar.conf`).
+- `dmenu` for pulsar scripts (can be changed in `pulsar.conf`).
 
 # Development
 
