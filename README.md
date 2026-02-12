@@ -1,5 +1,5 @@
 # Pulsar
-🚀 PULSAR - Scripts To Open Files, Manpages And More.
+🚀 PULSAR - Scripts To Open Files, Manpages And More. (Scripts are not stable yet!)
 
 
 
