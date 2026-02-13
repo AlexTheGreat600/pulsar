@@ -7,33 +7,34 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 
 
 
-| SCRIPT              | DESCRIPTION                   |
+| SCRIPT                | DESCRIPTION                   |
 | --------------------- | ----------------------------- |
-| pulsar-files          | Script is customisible through config files (most script are created using this). |
-| pulsar-applications   | Launch applications (appimage, local binaries, etc) very quickly. |
-| pulsar-documents      | Open documents without using any file manager. |
-| pulsar-music          | Open music file with light speed. |
-| pulsar-pictures       | Open your pics in ~/Pictures folder (this can be customized through config). |
-| pulsar-projects       | Open your project with selected editor. |
-| pulsar-sources        | Open your sources for different outside projects (cloned from git, etc). |
-| pulsar-videos         | Open your videos with speed of the antimatter ship. |
-| pulsar-wallpapers     | Set or view wallpaper quickly. |
-| pulsar-xresources     | Parse the selected xresources file (can be usefull when changing theme of awesomewm, terminal or others). |
-| pulsar-manpages       | View manpages without using terminal. |
-| pulsar-list           | Helper script to make other script work (like pulsar-websearch). |
-| pulsar-websearch      | Search using selected search engine url. |
-| pulsar-keybindings    | Quickly see keybindings for apps. |
-| pulsar-webbookmarks   | Open the selected in you favourite browser. |
-| pulsar-notes          | Copy or edit text content of the selected note. (usefull for snippets and templates) |
-| pulsar-execute        | Run commands in terminal (with or without pause) or normally like dmenu_run  |
-| pulsar-cmdbookmarks   | Run commonly used commands quickly |
-| pulsar-games          | Launch games (nes, snes, etc) very quickly |
-| pulsar-filebookmarks  | Bookmark files or folders and open them quickly |
-| pulsar-desktop        | Open installed desktop files quickly |
-| pulsar-emojis         | Quickly access emojis using this script |
-| pulsar-process        | Quickly run commands on process |
 | pulsar-mime           | Set mimetypes very quickly |
+| pulsar-wallpapers     | Set or view wallpaper quickly. |
+| pulsar-process        | Quickly run commands on process |
+| pulsar-music          | Open music file with light speed. |
+| pulsar-keybindings    | Quickly see keybindings for apps. |
+| pulsar-cmdbookmarks   | Run commonly used commands quickly |
 | pulsar-package        | Run commands on installed packages |
+| pulsar-desktop        | Open installed desktop files quickly |
+| pulsar-manpages       | View manpages without using terminal. |
+| pulsar-projects       | Open your project with selected editor. |
+| pulsar-emojis         | Quickly access emojis using this script |
+| pulsar-flags          | Store, view and copy command line flags |
+| pulsar-websearch      | Search using selected search engine url. |
+| pulsar-games          | Launch games (nes, snes, etc) very quickly |
+| pulsar-webbookmarks   | Open the selected in you favourite browser. |
+| pulsar-documents      | Open documents without using any file manager. |
+| pulsar-filebookmarks  | Bookmark files or folders and open them quickly |
+| pulsar-videos         | Open your videos with speed of the antimatter ship. |
+| pulsar-list           | Helper script to make other script work (like pulsar-websearch). |
+| pulsar-applications   | Launch applications (appimage, local binaries, etc) very quickly. |
+| pulsar-sources        | Open your sources for different outside projects (cloned from git, etc). |
+| pulsar-pictures       | Open your pics in ~/Pictures folder (this can be customized through config). |
+| pulsar-execute        | Run commands in terminal (with or without pause) or normally like dmenu_run  |
+| pulsar-files          | Script is customisible through config files (most script are created using this). |
+| pulsar-notes          | Copy or edit text content of the selected note. (usefull for snippets and templates) |
+| pulsar-xresources     | Parse the selected xresources file (can be usefull when changing theme of awesomewm, terminal or others). |
 
 *Other scripts*
 
@@ -94,6 +95,7 @@ Here are some aliases for tpulsar scripts.
 ```bash
 alias tmime="tpulsar-mime"
 alias tnote="tpulsar-notes"
+alias tflags="tpulsar-flags"
 alias troms="tpulsar-games"
 alias tsrc="tpulsar-sources"
 alias tvids="tpulsar-videos"
@@ -126,6 +128,7 @@ alias proms="pulsar-games"
 alias pmusic="pulsar-music"
 alias psrc="pulsar-sources"
 alias pvids="pulsar-videos"
+alias tflags="tpulsar-flags"
 alias pdesk="pulsar-desktop"
 alias pman="pulsar-manpages"
 alias pexec="pulsar-execute"
