@@ -51,11 +51,11 @@ while [ $# -gt 0 ]; do
 done
 
 # Show desktop apps prompt
-PULSAR_DESKTOP=$(find $PULSAR_DIR -name '*.desktop' $PULSAR_FIND_OPTS | \
-                      sed "s|.*/||; s|\.desktop$||" | \
-                      sort $PULSAR_SORT_OPTS | \
-                      sed "s/^/$PULSAR_ICON /" | \
-                      $PULSAR_PROMPT $PULSAR_PROMPT_OPTS)
+PULSAR_DESKTOP="$(find $PULSAR_DIR -name '*.desktop' $PULSAR_FIND_OPTS | \
+                       sed "s|.*/||; s|\.desktop$||" | \
+                       sort $PULSAR_SORT_OPTS | \
+                       sed "s/^/$PULSAR_ICON /" | \
+                       $PULSAR_PROMPT $PULSAR_PROMPT_OPTS)"
 
 [ -z "$PULSAR_DESKTOP" ] && exit 1
 
