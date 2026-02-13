@@ -30,7 +30,7 @@ pulsar_show_help() {
     # Show to colored help
     RESET="$(tput sgr0)"
     BLUE="$(tput bold && tput setaf 4)"
-    echo "${BLUE}pulsar-desktop:${RESET} [-d, --dirs directory] [-c, --config config_file] [-i, --icon icon] [-r, --random-sort]\n"
+    echo "${BLUE}pulsar-desktop:${RESET} [-d, --dirs directory] [-c, --config config_file] [-i, --icon icon] [-r, --random-sort] [-o, --output-mode]\n"
 
     # Exit after showing help
     exit 1
@@ -43,6 +43,7 @@ while [ $# -gt 0 ]; do
         -c|--config) shift && . "$1";;
         -d|--dirs) shift && PULSAR_DIR="$1";;
         -i|--icon) shift && PULSAR_ICON="$1";;
+        -o|--output-mode) PULSAR_OUTPUT_MODE="true";;
         -r|--random-sort) PULSAR_SORT_OPTS="$PULSAR_SORT_OPTS --random-sort";;
         *) pulsar_show_help;;
     esac
@@ -67,6 +68,12 @@ PULSAR_DESKTOP_PATH=$(find $PULSAR_DIR -name "$PULSAR_DESKTOP.desktop" | head -n
 
 # Extract the exec command
 PULSAR_DESKTOP_EXEC=$(echo "$PULSAR_DESKTOP_PATH" | xargs awk -F= '/^Exec=/ {sub(/^Exec=/, ""); gsub(/%[iIkKnNuvVfF]/, ""); print; exit}')
+
+# Output command of desktop file
+if [ "$PULSAR_OUTPUT_MODE" = "true" ]; then
+    echo "$PULSAR_DESKTOP_EXEC"
+    exit 0
+fi
 
 # Execute the desktop command
 if [ -z "$PULSAR_DETCH" ]; then
