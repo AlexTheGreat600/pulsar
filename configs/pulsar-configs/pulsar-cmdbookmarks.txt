@@ -21,6 +21,7 @@ pulsar-process
 pulsar-videos
 pulsar-xresources
 pulsar-packages
+pulsar-flags
 tpulsar-applications
 tpulsar-emojis
 tpulsar-keybindings
@@ -44,6 +45,7 @@ tpulsar-process
 tpulsar-videos
 tpulsar-xresources
 tpulsar-packages
+tpulsar-flags
 backlight-brightness -s 20
 backlight-brightness -s 50
 backlight-brightness -s 100

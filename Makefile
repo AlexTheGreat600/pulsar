@@ -123,6 +123,7 @@ test-pulsar-scripts:
 	pulsar-desktop
 	pulsar-process
 	pulsar-mime
+	pulsar-flags
 
 #   _____ ___ ___ _____   _____ ___ _   _ _    ___   _   ___ 
 #  |_   _| __/ __|_   _|_|_   _| _ \ | | | |  / __| /_\ | _ \
@@ -151,3 +152,4 @@ test-tpulsar-scripts:
 	tpulsar-desktop
 	tpulsar-process
 	tpulsar-mime
+	tpulsar-flags
