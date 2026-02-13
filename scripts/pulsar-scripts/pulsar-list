@@ -60,10 +60,17 @@ done
 # Change the current directory
 cd "$PULSAR_DIR"
 
-# Prepend icon to list and show prompt
-PULSAR_ITEM="$( sort $PULSAR_SORT_OPTS < "$PULSAR_LIST" | \
-                sed "s|^|$PULSAR_ICON |" | \
-                $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
+if [ "$PULSAR_SORT_ENABLE" = "false" ]; then
+    # Prepend icon to list and show prompt (unsorted)
+    PULSAR_ITEM="$( cat < "$PULSAR_LIST" | \
+                    sed "s|^|$PULSAR_ICON |" | \
+                    $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
+else
+    # Prepend icon to list and show prompt (sorted)
+    PULSAR_ITEM="$( sort $PULSAR_SORT_OPTS < "$PULSAR_LIST" | \
+                    sed "s|^|$PULSAR_ICON |" | \
+                    $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
+fi
 
 [ -z "$PULSAR_ITEM" ] && exit 1
 
