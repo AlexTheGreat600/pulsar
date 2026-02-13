@@ -8,3 +8,5 @@
 # ╚═╝  ╚═╝ ╚═════╝╚══════╝╚═╝╚═╝     
 
 echo "$@" | xclip -selection primary
+echo "$@" | xclip -selection secondary
+echo "$@" | xclip -selection clipboard
