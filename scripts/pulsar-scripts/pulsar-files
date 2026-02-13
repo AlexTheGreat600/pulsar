@@ -86,7 +86,6 @@ if [ -z "$PULSAR_OPENER" ]; then
 
     # Show the prompt for opener
     PULSAR_OPENER="$( echo "$PULSAR_OPENERS $PULSAR_GLOBAL_OPENERS" | \
-                            sort $PULSAR_SORT_OPTS | \
                             sed "s/^/$PULSAR_ICON /" | \
                             $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
 

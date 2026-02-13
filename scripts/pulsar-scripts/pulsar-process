@@ -89,8 +89,7 @@ fi
 if [ -z "$PULSAR_ACTION" ]; then
 
     # Show the prompt for action
-    PULSAR_ACTION="$( echo "$PULSAR_ACTIONS" | sort $PULSAR_SORT_OPTS \
-                                             | sed "s/^/$PULSAR_ICON /" \
+    PULSAR_ACTION="$( echo "$PULSAR_ACTIONS" | sed "s/^/$PULSAR_ICON /" \
                                              | $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
 
     [ -z "$PULSAR_ACTION" ] && exit 1
