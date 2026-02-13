@@ -7,4 +7,4 @@
 # ██╔╝ ██╗╚██████╗███████╗██║██║     
 # ╚═╝  ╚═╝ ╚═════╝╚══════╝╚═╝╚═╝     
 
-echo "$@" | xclip -selection c
+echo "$@" | xclip -selection primary
