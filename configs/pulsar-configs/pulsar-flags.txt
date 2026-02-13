@@ -1,2 +1,51 @@
---help          : common flags :
---version       : common flags :
+--dir           : pulsar-files - set default path :
+--open          : pulsar-files - set default file opener :
+--config        : pulsar-files - parse config files :
+--icon          : pulsar-files - set default icon :
+--random-sort   : pulsar-files - sort file randomly :
+
+--open          : pulsar-list - set default opener :
+--list          : pulsar-list - set default list file :
+--config        : pulsar-list - parse config files :
+--icon          : pulsar-list - set default icon :
+--random-sort   : pulsar-list - randomly sort list :
+
+--config        : pulsar-execute - parse config files :
+--icon          : pulsar-execute - set default icon :
+--random-sort   : pulsar-execute - randomly sort list :
+--run           : pulsar-execute - enable run mode :
+--pause         : pulsar-execute - pause while running in terminal :
+--output-mode   : pulsar-execute - enable output mode :
+
+--config        : pulsar-desktop - parse config files :
+--dirs          : pulsar-desktop - set desktop dirs :
+--icon          : pulsar-desktop - set default icon :
+--output-mode   : pulsar-desktop - set output mode :
+--random-sort   : pulsar-desktop - sort entires randomly :
+
+--config        : pulsar-manpages - parse config files :
+--simple        : pulsar-manpages - enable simple view :
+--icon          : pulsar-manpages - set default icon :
+--detailed      : pulsar-manpages - enable default view :
+--manpager      : pulsar-manpages - set default manpager (example - vim or bat) :
+--random-sort   : pulsar-manpages - sort manpages randomly :
+
+--config        : pulsar-mime - parse config files :
+--icon          : pulsar-mime - set default icon :
+--desktop-dirs  : pulsar-mime - set desktop dirs (like /usr/share/applications) :
+--mime-lists    : pulsar-mime - set the list containing mime types :
+--random-sort   : pulsar-mime - sort entries randomly :
+
+--config        : pulsar-packages - parse config files :
+--simple        : pulsar-packages - enable simple package view :
+--icon          : pulsar-packages - set default icon :
+--detailed      : pulsar-packages - enable detailed package view :
+--open          : pulsar-packages - set default opener :
+--random-sort   : pulsar-packages - sort entires randomly :
+
+--config        : pulsar-process - parse config files :
+--simple        : pulsar-process - enable simple process view :
+--normal        : pulsar-process - enable normal process view :
+--icon          : pulsar-process - set default icon :
+--detailed      : pulsar-process - enable detailed process view :
+--random-sort   : pulsar-process - sort entires randomly :
