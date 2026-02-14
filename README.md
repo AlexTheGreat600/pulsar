@@ -43,6 +43,7 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | xclip-copy          | Copy the selected entry text |
 | xclip-file-copy     | Copy the text of entire file |
 | xdotool-type-file   | Type entire text of file |
+| xte-type            | Type text using xte tool |
 | xretroarch          | A simple retroarch helper script |
 
 # Support.
@@ -77,6 +78,7 @@ I am born dyslexic and mentally ill, it took a lot of effort to make this projec
 
 - `sxhkd` for keybindings (optional).
 - `make` for installation. (important)
+- `xautomation` for `xte-type` script (optional).
 - `xclip` for `xclip-file-copy` script (optional).
 - `xdotool` for `xdotool-type-file` script (optional).
 - `fzf` for tpulsar scripts (can be changed in `tpulsar.conf`).
