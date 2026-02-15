@@ -62,8 +62,7 @@ cd "$PULSAR_DIR"
 
 if [ "$PULSAR_SORT_ENABLE" = "false" ]; then
     # Prepend icon to list and show prompt (unsorted)
-    PULSAR_ITEM="$( cat "$PULSAR_LIST" | \
-                    sed "s|^|$PULSAR_ICON |" | \
+    PULSAR_ITEM="$( sed "s|^|$PULSAR_ICON |" "$PULSAR_LIST" | \
                     $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
 else
     # Prepend icon to list and show prompt (sorted)
