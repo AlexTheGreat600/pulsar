@@ -87,7 +87,8 @@ case "$PULSAR_ITEM" in
             printf "\n" >> "$PULSAR_LIST"
         fi
 
-        echo "$PULSAR_CLEAN_ITEM" >> "$PULSAR_LIST" && exit 0;;
+        echo "$PULSAR_CLEAN_ITEM" >> "$PULSAR_LIST"
+        exit 0;;
 
     *"<")
         PULSAR_CLEAN_ITEM="${PULSAR_ITEM%?}"

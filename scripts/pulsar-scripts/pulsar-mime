@@ -6,14 +6,14 @@ set -e
 # Function to show logo
 pulsar_show_logo() {
     tput setaf 4
-    "                                   "
-    " ███╗   ███╗██╗███╗   ███╗███████╗ "
-    " ████╗ ████║██║████╗ ████║██╔════╝ "
-    " ██╔████╔██║██║██╔████╔██║█████╗   PULSAR-MIME "
-    " ██║╚██╔╝██║██║██║╚██╔╝██║██╔══╝   "
-    " ██║ ╚═╝ ██║██║██║ ╚═╝ ██║███████╗ "
-    " ╚═╝     ╚═╝╚═╝╚═╝     ╚═╝╚══════╝ "
-    "                                   "
+    echo "                                   "
+    echo " ███╗   ███╗██╗███╗   ███╗███████╗ "
+    echo " ████╗ ████║██║████╗ ████║██╔════╝ "
+    echo " ██╔████╔██║██║██╔████╔██║█████╗   PULSAR-MIME "
+    echo " ██║╚██╔╝██║██║██║╚██╔╝██║██╔══╝   "
+    echo " ██║ ╚═╝ ██║██║██║ ╚═╝ ██║███████╗ "
+    echo " ╚═╝     ╚═╝╚═╝╚═╝     ╚═╝╚══════╝ "
+    echo "                                   "
     tput sgr0
 }
 
@@ -59,17 +59,17 @@ PULSAR_MIME="$( cat $PULSAR_MIME_LISTS | sort $PULSAR_SORT_OPTS \
 [ -z "$PULSAR_MIME" ] && exit 1
 
 # Show desktop apps prompt
-PULSAR_DESKTOP=$(find $PULSAR_DIR -name '*.desktop' $PULSAR_FIND_OPTS | \
-                      sed "s|.*/||; s|\.desktop$||" | \
-                      sort $PULSAR_SORT_OPTS | \
-                      sed "s/^/$PULSAR_ICON /" | \
-                      $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS)
+PULSAR_DESKTOP="$( find $PULSAR_DIR -name '*.desktop' $PULSAR_FIND_OPTS | \
+                        sed "s|.*/||; s|\.desktop$||" | \
+                        sort $PULSAR_SORT_OPTS | \
+                        sed "s/^/$PULSAR_ICON /" | \
+                        $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
 
 [ -z "$PULSAR_DESKTOP" ] && exit 1
 
 # Remove the icon and the space
-PULSAR_MIME=$(echo "$PULSAR_MIME" | sed "s/^$PULSAR_ICON //")
-PULSAR_DESKTOP=$(echo "$PULSAR_DESKTOP" | sed "s/^$PULSAR_ICON //")
+PULSAR_MIME="$(echo "$PULSAR_MIME" | sed "s/^$PULSAR_ICON //")"
+PULSAR_DESKTOP="$(echo "$PULSAR_DESKTOP" | sed "s/^$PULSAR_ICON //")"
 
 # Set the application for selected mime type
 xdg-mime default $PULSAR_DESKTOP.desktop $PULSAR_MIME

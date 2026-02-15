@@ -96,7 +96,7 @@ if [ -z "$PULSAR_ACTION" ]; then
 fi
 
 # Remove the icon and the space from the selection
-PULSAR_ACTION=$(echo "$PULSAR_ACTION" | sed "s/^$PULSAR_ICON //")
+PULSAR_ACTION="$(echo "$PULSAR_ACTION" | sed "s/^$PULSAR_ICON //")"
 
 # Run command on process
 $PULSAR_ACTION "$PULSAR_PROCESS"

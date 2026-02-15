@@ -73,15 +73,15 @@ elif [ "$PULSAR_SHOW_HIDDEN" = "false" ]; then
 
     # Show the prompt for files (hide-hidden)
     PULSAR_FILE="$( find . -not -path '*/.*' $PULSAR_FIND_OPTS | \
-                                           sort $PULSAR_SORT_OPTS | \
-                                           sed "s|^\./|$PULSAR_ICON |" | \
-                                           $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
+                                             sort $PULSAR_SORT_OPTS | \
+                                             sed "s|^\./|$PULSAR_ICON |" | \
+                                             $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
 fi
 
 [ -z "$PULSAR_FILE" ] && exit 1
 
 # Remove the icon and the space from the selection
-PULSAR_FILE=$(echo "$PULSAR_FILE" | sed "s/^$PULSAR_ICON //")
+PULSAR_FILE="$(echo "$PULSAR_FILE" | sed "s/^$PULSAR_ICON //")"
 
 if [ -z "$PULSAR_OPENER" ]; then
 
@@ -94,7 +94,7 @@ if [ -z "$PULSAR_OPENER" ]; then
 fi
 
 # Remove the icon and the space from the selection
-PULSAR_OPENER=$(echo "$PULSAR_OPENER" | sed "s/^$PULSAR_ICON //")
+PULSAR_OPENER="$(echo "$PULSAR_OPENER" | sed "s/^$PULSAR_ICON //")"
 
 # Run file using opener
 if [ -z "$PULSAR_DETCH" ]; then

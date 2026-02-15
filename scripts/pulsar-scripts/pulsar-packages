@@ -86,7 +86,7 @@ if [ -z "$PULSAR_OPENER" ]; then
 fi
 
 # Remove the icon and the space from the selection
-PULSAR_OPENER=$(echo "$PULSAR_OPENER" | sed "s/^$PULSAR_ICON //")
+PULSAR_OPENER="$(echo "$PULSAR_OPENER" | sed "s/^$PULSAR_ICON //")"
 
 # Run file using opener
 if [ -z "$PULSAR_DETCH" ]; then
