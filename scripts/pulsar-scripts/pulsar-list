@@ -62,12 +62,12 @@ cd "$PULSAR_DIR"
 
 if [ "$PULSAR_SORT_ENABLE" = "false" ]; then
     # Prepend icon to list and show prompt (unsorted)
-    PULSAR_ITEM="$( sed "s|^|$PULSAR_ICON |" "$PULSAR_LIST" | \
+    PULSAR_ITEM="$( sed "/./ s|^|$PULSAR_ICON |" "$PULSAR_LIST" | \
                     $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
 else
     # Prepend icon to list and show prompt (sorted)
     PULSAR_ITEM="$( sort $PULSAR_SORT_OPTS "$PULSAR_LIST" | \
-                    sed "s|^|$PULSAR_ICON |" | \
+                    sed "/./ s|^|$PULSAR_ICON |" | \
                     $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
 fi
 
@@ -87,9 +87,7 @@ case "$PULSAR_ITEM" in
             printf "\n" >> "$PULSAR_LIST"
         fi
 
-        echo "$PULSAR_CLEAN_ITEM" >> "$PULSAR_LIST"
-        exit 0
-        ;;
+        echo "$PULSAR_CLEAN_ITEM" >> "$PULSAR_LIST" && exit 0;;
 
     *"<")
         PULSAR_CLEAN_ITEM="${PULSAR_ITEM%?}"
@@ -100,8 +98,7 @@ case "$PULSAR_ITEM" in
             mv "$PULSAR_LIST.tmp" "$PULSAR_LIST"
         fi
 
-        exit 0
-        ;;
+        exit 0;;
 esac
 
 # Show the prompt for opener
