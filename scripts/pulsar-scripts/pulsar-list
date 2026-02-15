@@ -74,8 +74,8 @@ fi
 [ -z "$PULSAR_ITEM" ] && exit 1
 
 # Remove the icon, the space, and any :comment: from the selection
-PULSAR_ITEM=$(echo "$PULSAR_ITEM" | \
-                    sed "s/^$PULSAR_ICON //; s/:.*://g; s/  */ /g; s/^ //; s/ $//")
+PULSAR_ITEM="$(echo "$PULSAR_ITEM" | \
+                     sed "s/^$PULSAR_ICON //; s/:.*://g; s/  */ /g; s/^ //; s/ $//")"
 
 # Check if user is trying to add or remove the entry
 case "$PULSAR_ITEM" in
@@ -112,7 +112,7 @@ if [ -z "$PULSAR_OPENER" ]; then
 fi
 
 # Remove the icon and the space from the selection
-PULSAR_OPENER=$(echo "$PULSAR_OPENER" | sed "s/^$PULSAR_ICON //")
+PULSAR_OPENER="$(echo "$PULSAR_OPENER" | sed "s/^$PULSAR_ICON //")"
 
 # Run file using opener
 if [ -z "$PULSAR_DETCH" ]; then
