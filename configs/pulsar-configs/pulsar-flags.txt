@@ -3,6 +3,7 @@
 --config        : pulsar-files - parse config files :
 --icon          : pulsar-files - set default icon :
 --random-sort   : pulsar-files - sort file randomly :
+--show-hidden   : pulsar-files - show hidden files :
 
 --open          : pulsar-list - set default opener :
 --list          : pulsar-list - set default list file :
