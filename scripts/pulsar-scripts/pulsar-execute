@@ -62,12 +62,10 @@ done
 # Show the prompt for commands
 PULSAR_CMD="$( dmenu_path | sort $PULSAR_SORT_OPTS \
                           | sed "s/^/$PULSAR_ICON /" \
-                          | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
+                          | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
+                          | sed "s/^$PULSAR_ICON //" )"
 
 [ -z "$PULSAR_CMD" ] && exit 1
-
-# Remove the icon and the space from the selection
-PULSAR_CMD="$(echo "$PULSAR_CMD" | sed "s/^$PULSAR_ICON //")"
 
 # Output command of desktop file
 if [ "$PULSAR_OUTPUT_MODE" = "true" ]; then

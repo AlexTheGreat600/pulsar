@@ -54,7 +54,8 @@ done
 # Prepend icon to list and show prompt
 PULSAR_MIME="$( cat $PULSAR_MIME_LISTS | sort $PULSAR_SORT_OPTS \
                                        | sed "s|^|$PULSAR_ICON |" \
-                                       | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS )"
+                                       | $PULSAR_PROMPT $PULSAR_PROMPT_OPTS \
+                                       | sed "s/^$PULSAR_ICON //" )"
 
 [ -z "$PULSAR_MIME" ] && exit 1
 
@@ -63,13 +64,10 @@ PULSAR_DESKTOP="$( find $PULSAR_DIR -name '*.desktop' $PULSAR_FIND_OPTS | \
                         sed "s|.*/||; s|\.desktop$||" | \
                         sort $PULSAR_SORT_OPTS | \
                         sed "s/^/$PULSAR_ICON /" | \
-                        $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
+                        $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS | \
+                        sed "s/^$PULSAR_ICON //" )"
 
 [ -z "$PULSAR_DESKTOP" ] && exit 1
-
-# Remove the icon and the space
-PULSAR_MIME="$(echo "$PULSAR_MIME" | sed "s/^$PULSAR_ICON //")"
-PULSAR_DESKTOP="$(echo "$PULSAR_DESKTOP" | sed "s/^$PULSAR_ICON //")"
 
 # Set the application for selected mime type
 xdg-mime default $PULSAR_DESKTOP.desktop $PULSAR_MIME

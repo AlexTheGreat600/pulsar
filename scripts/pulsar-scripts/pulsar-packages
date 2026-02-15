@@ -80,13 +80,11 @@ if [ -z "$PULSAR_OPENER" ]; then
     # Show the prompt for opener
     PULSAR_OPENER="$( echo "$PULSAR_OPENERS $PULSAR_GLOBAL_OPENERS" | \
                             sed "s/^/$PULSAR_ICON /" | \
-                            $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
+                            $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS | \
+                            sed "s/^$PULSAR_ICON //" )"
 
     [ -z "$PULSAR_OPENER" ] && exit 1
 fi
-
-# Remove the icon and the space from the selection
-PULSAR_OPENER="$(echo "$PULSAR_OPENER" | sed "s/^$PULSAR_ICON //")"
 
 # Run file using opener
 if [ -z "$PULSAR_DETCH" ]; then
