@@ -27,7 +27,6 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | pulsar-documents      | Open documents without using any file manager. |
 | pulsar-filebookmarks  | Bookmark files or folders and open them quickly |
 | pulsar-videos         | Open your videos with speed of the antimatter ship. |
-| pulsar-list           | Helper script to make other script work (like pulsar-websearch). |
 | pulsar-applications   | Launch applications (appimage, local binaries, etc) very quickly. |
 | pulsar-sources        | Open your sources for different outside projects (cloned from git, etc). |
 | pulsar-pictures       | Open your pics in ~/Pictures folder (this can be customized through config). |
@@ -35,6 +34,7 @@ https://github.com/user-attachments/assets/bf330a6d-5ab9-46c6-8389-781a1319c369
 | pulsar-files          | Script is customisible through config files (most script are created using this). |
 | pulsar-notes          | Copy or edit text content of the selected note. (usefull for snippets and templates) |
 | pulsar-xresources     | Parse the selected xresources file (can be usefull when changing theme of awesomewm, terminal or others). |
+| pulsar-list           | Helper script to make other script work (new entries can be added using 'entry>' or removed using 'entry<' in list prompt). |
 
 *Other scripts*
 

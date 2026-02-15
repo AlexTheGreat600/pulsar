@@ -78,9 +78,38 @@ fi
 PULSAR_ITEM=$(echo "$PULSAR_ITEM" | \
                     sed "s/^$PULSAR_ICON //; s/:.*://g; s/  */ /g; s/^ //; s/ $//")
 
+# Check if user is trying to add or remove the entry
+case "$PULSAR_ITEM" in
+    *">")
+        PULSAR_CLEAN_ITEM="${PULSAR_ITEM%?}"
+
+        # Add newline if file exists and is missing a trailing one
+        if [ -s "$PULSAR_LIST" ] && [ "$(tail -c 1 "$PULSAR_LIST" | wc -l)" -eq 0 ]; then
+            printf "\n" >> "$PULSAR_LIST"
+        fi
+        
+        echo "$PULSAR_CLEAN_ITEM" >> "$PULSAR_LIST"
+        exit 0
+        ;;
+
+    *"<")
+        PULSAR_CLEAN_ITEM="${PULSAR_ITEM%?}"
+
+        # Only attempt removal if the file exists and is not empty
+        if [ -s "$PULSAR_LIST" ]; then
+            # Create a temp file without the matching line
+            grep -v -x "$PULSAR_CLEAN_ITEM" "$PULSAR_LIST" > "$PULSAR_LIST.tmp"
+            
+            # Replace the old list with the cleaned list
+            mv "$PULSAR_LIST.tmp" "$PULSAR_LIST"
+        fi
+        exit 0
+        ;;
+esac
+
+# Show the prompt for opener
 if [ -z "$PULSAR_OPENER" ]; then
 
-    # Show the prompt for opener
     PULSAR_OPENER="$( echo "$PULSAR_OPENERS $PULSAR_GLOBAL_OPENERS" | \
                             sed "s/^/$PULSAR_ICON /" | \
                             $PULSAR_PROMPT $PULSAR_OPENER_PROMPT_OPTS )"
